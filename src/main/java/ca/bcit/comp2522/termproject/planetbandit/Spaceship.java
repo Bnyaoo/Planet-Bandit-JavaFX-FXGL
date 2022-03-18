@@ -1,5 +1,6 @@
 package ca.bcit.comp2522.termproject.planetbandit;
 
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
@@ -85,7 +86,17 @@ public class Spaceship extends Rectangle {
         }
 
         /* If spaceship reaches bottom of the screen*/
-        return this.getBoundsInParent().intersects(screenWidth, startingPoint, startingPoint, screenHeight);
+        if (this.getBoundsInParent().intersects(screenWidth, startingPoint, startingPoint, screenHeight)) {
+            return true;
+        }
+        return false;
+    }
+
+    public void shoot(Pane root) {
+        if (this.isDead() != true) {
+            Spaceship s = new Spaceship((int) this.getTranslateX() + 20, (int) this.getTranslateY(), 5, 20, this.getType() + "bullet", Color.BLACK);
+            root.getChildren().add(s);
+        }
     }
 
     /**
@@ -133,26 +144,41 @@ public class Spaceship extends Rectangle {
         return isDead() == spaceship.isDead() && getType().equals(spaceship.getType());
     }
 
+//    /**
+//     * Returns a unique value based on the state of the spaceship object.
+//     *
+//     * @return an int that represents the state of the spaceship object.
+//     */
+//    @Override
+//    public int hashCode() {
+//        final int seventeen = 17;
+//        final int thirtySeven = 37;
+//        final int isDeadValue;
+//
+//        if (dead) {
+//            isDeadValue = 1;
+//        } else {
+//            isDeadValue = 0;
+//        }
+//        int result = seventeen;
+//        result = thirtySeven * result + type.hashCode();
+//        result = thirtySeven * result + isDeadValue;
+//        result = thirtySeven * result + moveSpeed;
+//        return result;
+//    }
+
     /**
-     * Returns a unique value based on the state of the spaceship object.
+     * Returns a string representation of the spaceship object.
      *
-     * @return an int that represents the state of the spaceship object.
+     * @return a string that represents a spaceship object
      */
     @Override
-    public int hashCode() {
-        final int seventeen = 17;
-        final int thirtySeven = 37;
-        final int isDeadValue;
-
-        if (dead) {
-            isDeadValue = 1;
-        } else {
-            isDeadValue = 0;
-        }
-        int result = seventeen;
-        result = thirtySeven * result + type.hashCode();
-        result = thirtySeven * result + isDeadValue;
-        result = thirtySeven * result + moveSpeed;
-        return result;
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("Spaceship{");
+        sb.append("dead=").append(dead);
+        sb.append(", type='").append(type).append('\'');
+        sb.append(", moveSpeed=").append(moveSpeed);
+        sb.append('}');
+        return sb.toString();
     }
 }

@@ -15,6 +15,7 @@ import java.util.stream.Collectors;
 public class Space extends Application {
     private Pane root = new Pane();
     private double time = 0;
+    private final Random number = new Random();
     private Spaceship spaceship = new Spaceship(250, 600, 40, 40, "spaceship", Color.BLUE);
 
     private Parent createContent() {
@@ -37,7 +38,7 @@ public class Space extends Application {
     }
 
     private void addMeteorite() {
-        Random number = new Random();
+
         for (int i = 0; i < 3; i++) {
             int random_x = number.nextInt(50, 450);
             Spaceship s = new Spaceship(random_x, 100, 30, 30, "enemy", Color.RED);
@@ -64,7 +65,7 @@ public class Space extends Application {
                     }
                     break;
 
-                case "playerbullet":
+                case "spaceshipbullet":
                     object.moveUp();
 
                     spaceObjects().stream().filter(e -> e.getType().equals("enemy")).forEach(enemy -> {
@@ -78,11 +79,6 @@ public class Space extends Application {
 
                 case "enemy":
                     object.moveDown();
-                    if (time > 2) {
-                        if (Math.random() < 0.3) {
-                            shoot(object);
-                        }
-                    }
 
                     if (object.getBoundsInParent().intersects(spaceship.getBoundsInParent())) {
                         spaceship.setDead(true);
@@ -112,13 +108,6 @@ public class Space extends Application {
         }
     }
 
-    private void shoot(Spaceship who) {
-        if (spaceship.isDead() != true) {
-            Spaceship s = new Spaceship((int) who.getTranslateX() + 20, (int) who.getTranslateY(), 5, 20, who.getType() + "bullet", Color.BLACK);
-            root.getChildren().add(s);
-        }
-    }
-
     @Override
     public void start(Stage stage) throws Exception {
         Scene scene = new Scene(createContent());
@@ -138,7 +127,7 @@ public class Space extends Application {
                     spaceship.moveDown();
                     break;
                 case SPACE:
-                    shoot(spaceship);
+                    spaceship.shoot(root);
                     break;
             }
         });

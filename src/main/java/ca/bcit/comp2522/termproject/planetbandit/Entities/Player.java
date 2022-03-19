@@ -16,15 +16,17 @@ public class Player extends Actor {
      * Constructs an object of type Player.
      *
      * @param health player's health points as an int
+     * @param attackPower actor's attack power as an int
      * @param level player's level as an int
      * @param xCoordinate player's x-coordinate as a double
      * @param yCoordinate player's y-coordinate as a double
      * @param xp player's experience points as an int
      * @param name player's name as a String
      */
-    protected Player(final int health, final int level, final double xCoordinate,
-                     final double yCoordinate, final int xp, final String name) {
-        super(health, level, xCoordinate, yCoordinate);
+    protected Player(final int health, final int level, final int attackPower,
+                     final double xCoordinate, final double yCoordinate, final int xp,
+                     final String name) {
+        super(health, level, attackPower, xCoordinate, yCoordinate);
         this.xp = xp;
         this.name = name;
     }

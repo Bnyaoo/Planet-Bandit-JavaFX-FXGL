@@ -5,7 +5,11 @@ import javafx.stage.Stage;
 
 public class GamePlay extends Application {
     private final Stage stage = new Stage();
-    private final Space space = new Space();
+    private final Map map = new Map();
+    private final String spaceship = "spaceship.png";
+    private final String spaceBackground = "space.jpg";
+    private final String character = "player.png";
+
 
     /**
      * Displays an image that can be moved using the arrow keys.
@@ -13,7 +17,7 @@ public class GamePlay extends Application {
      * @param primaryStage a Stage
      */
     public void start(Stage primaryStage) {
-        space.start(stage);
+        map.start(stage, spaceship, spaceBackground);
     }
 
     /**

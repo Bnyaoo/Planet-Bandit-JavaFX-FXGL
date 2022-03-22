@@ -14,6 +14,10 @@ public abstract class Actor {
      */
     protected int health;
     /**
+     * Represents the actor's attack power as an int.
+     */
+    protected int attackPower;
+    /**
      * Represents the actor's level as an int.
      */
     protected int level;
@@ -30,13 +34,15 @@ public abstract class Actor {
      * Constructs an object of type Actor.
      *
      * @param health actor's health points as an int
+     * @param attackPower actor's attack power as an int
      * @param level actor's level as an int
      * @param xCoordinate actor's x-coordinate as a double
      * @param yCoordinate actor's y-coordinate as a double
      */
-    protected Actor(final int health, final int level, final double xCoordinate,
-                    final double yCoordinate) {
+    protected Actor(final int health, final int level, final int attackPower,
+                    final double xCoordinate, final double yCoordinate) {
         this.health = health;
+        this.attackPower = attackPower;
         this.level = level;
         this.xCoordinate = xCoordinate;
         this.yCoordinate = yCoordinate;
@@ -58,6 +64,24 @@ public abstract class Actor {
      */
     public void setHealth(final int health) {
         this.health = health;
+    }
+
+    /**
+     * Returns the attack power for this Actor.
+     *
+     * @return attackPower as an int
+     */
+    public int getAttackPower() {
+        return attackPower;
+    }
+
+    /**
+     * Sets the attack power of this Actor.
+     *
+     * @param attackPower of this Actor as an int
+     */
+    public void setAttackPower(final int attackPower) {
+        this.attackPower = attackPower;
     }
 
     /**
@@ -132,6 +156,9 @@ public abstract class Actor {
         Actor actor = (Actor) o;
 
         if (health != actor.health) {
+            return false;
+        }
+        if (attackPower != actor.attackPower) {
             return false;
         }
         if (level != actor.level) {

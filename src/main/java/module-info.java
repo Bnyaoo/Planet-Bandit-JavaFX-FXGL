@@ -9,6 +9,7 @@ module ca.bcit.comp2522.termproject.planetbandit {
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
+    requires java.desktop;
 
     opens ca.bcit.comp2522.termproject.planetbandit to javafx.fxml;
     exports ca.bcit.comp2522.termproject.planetbandit;

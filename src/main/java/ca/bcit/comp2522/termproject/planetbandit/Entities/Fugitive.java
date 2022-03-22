@@ -13,14 +13,15 @@ public class Fugitive extends Actor {
      * Constructs an object of type Actor.
      *
      * @param health actor's health points as an int
+     * @param attackPower actor's attack power as an int
      * @param level actor's level as an int
      * @param xCoordinate actor's x-coordinate as a double
      * @param yCoordinate actor's y-coordinate as a double
      * @param inmateNumber unique id number of a Fugitive object as an int
      */
-    protected Fugitive(final int health, final int level, final double xCoordinate,
-                       final double yCoordinate, final int inmateNumber) {
-        super(health, level, xCoordinate, yCoordinate);
+    protected Fugitive(final int health, final int level, final int attackPower,
+                       final double xCoordinate, final double yCoordinate, final int inmateNumber) {
+        super(health, level, attackPower, xCoordinate, yCoordinate);
         this.inmateNumber = inmateNumber;
     }
 

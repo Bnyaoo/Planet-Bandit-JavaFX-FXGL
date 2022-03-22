@@ -25,6 +25,7 @@ public class Space extends Application {
         /*Adds the spaceship to the screen*/
         root.getChildren().add(spaceship);
 
+
         AnimationTimer timer = new AnimationTimer() {
             @Override
             public void handle(long now) {
@@ -55,15 +56,6 @@ public class Space extends Application {
 
         spaceObjects().forEach(object -> {
             switch (object.getType()) {
-
-                case "enemybullet":
-                    object.moveDown();
-
-                    if (object.getBoundsInParent().intersects(spaceship.getBoundsInParent())) {
-                        spaceship.setDead(true);
-                        object.setDead(true);
-                    }
-                    break;
 
                 case "spaceshipbullet":
                     object.moveUp();

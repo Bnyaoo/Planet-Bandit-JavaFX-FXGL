@@ -10,7 +10,7 @@ import javafx.scene.shape.Rectangle;
  * @author Prab and Benny
  * @version 2022
  */
-public class Spaceship extends Rectangle {
+public class Spaceship extends SpaceObjects {
         private boolean dead = false;
         private final String type;
         private final int moveSpeed = 10;
@@ -27,7 +27,8 @@ public class Spaceship extends Rectangle {
      */
     Spaceship(final int xCoordinate, final int yCoordinate, final int width, final int height,
               final String type, final Color color) {
-            super(width, height, color);
+            super(xCoordinate,yCoordinate, width, height,
+        type, color);
             this.type = type;
             setTranslateX(xCoordinate);
             setTranslateY(yCoordinate);
@@ -57,9 +58,9 @@ public class Spaceship extends Rectangle {
     /**
      * Move the spaceship down.
      */
-    public void moveDown() {
-        setTranslateY(getTranslateY() + moveSpeed);
-    }
+//    public void moveDown() {
+//        setTranslateY(getTranslateY() + moveSpeed);
+//    }
 
     /**
      * Determines if spaceship collides with the walls.
@@ -104,27 +105,27 @@ public class Spaceship extends Rectangle {
      *
      * @return a boolean value
      */
-    public boolean isDead() {
-        return dead;
-    }
+//    public boolean isDead() {
+//        return dead;
+//    }
 
     /**
      * Sets the living status of the spaceship.
      *
      * @param dead a boolean value that represents the status of the spaceship
      */
-    public void setDead(final boolean dead) {
-        this.dead = dead;
-    }
+//    public void setDead(final boolean dead) {
+//        this.dead = dead;
+//    }
 
     /**
      * Returns the type of this space object.
      *
      * @return a String that represents the type of this space object
      */
-    public String getType() {
-        return type;
-    }
+//    public String getType() {
+//        return type;
+//    }
 
     /**
      * Determines if a spaceship and another object are equal.

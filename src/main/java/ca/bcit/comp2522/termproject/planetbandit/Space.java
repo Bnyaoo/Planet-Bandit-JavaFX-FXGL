@@ -1,134 +1,94 @@
 package ca.bcit.comp2522.termproject.planetbandit;
 
-import javafx.animation.AnimationTimer;
-import javafx.application.Application;
-import javafx.scene.Parent;
+import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.layout.Pane;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
-import java.util.List;
-import java.util.Random;
-import java.util.stream.Collectors;
 
-public class Space extends Application {
-    private Pane root = new Pane();
-    private double time = 0;
-    private final Random number = new Random();
-    private Spaceship spaceship = new Spaceship(250, 600, 40, 40, "spaceship", Color.BLUE);
+/**
+ * Represents a spaceship object.
+ *
+ * @author Prab and Benny
+ * @version 2022
+ */
+public class Space {
+    // Distance in pixels that the alien moves when a key is pressed
+    public static final int MOVE_SPEED = 15;
 
-    private Parent createContent() {
+    // Contains the image of the spaceship
+    private ImageView spaceshipImageView;
 
-        /* Sets the frame size*/
-        root.setPrefSize(500, 750);
-        /*Adds the spaceship to the screen*/
-        root.getChildren().add(spaceship);
+    // Contains the image of the spaceship
+    private ImageView spaceImageView;
 
+    /**
+     * Displays an image that can be moved using the arrow keys.
+     *
+     * @param primaryStage a Stage
+     */
+    public void start(Stage primaryStage) {
+        final int appWidth = 600;
+        final int appHeight = 600;
+        Image spaceship = new Image("spaceship.png", true);
+        spaceshipImageView = new ImageView(spaceship);
+        spaceshipImageView.setFitHeight(100);
+        spaceshipImageView.setFitWidth(60);
 
-        AnimationTimer timer = new AnimationTimer() {
-            @Override
-            public void handle(long now) {
-                update();
-            }
-        };
+        final int spaceshipStartXCoordinate = 270;
+        final int spaceshipStartYCoordinate = 450;
+        spaceshipImageView.setX(spaceshipStartXCoordinate);
+        spaceshipImageView.setY(spaceshipStartYCoordinate);
 
-        timer.start();
-        addMeteorite();
-        return root;
+        Image space = new Image("space.jpg", true);
+        spaceImageView = new ImageView(space);
+        spaceImageView.setFitHeight(appHeight);
+        spaceImageView.setFitWidth(appWidth);
+
+        Group root = new Group(spaceImageView, spaceshipImageView);
+
+        Scene scene = new Scene(root, appWidth, appHeight, Color.BLACK);
+
+        // Register the key listener here
+        scene.setOnKeyPressed(this::processKeyPress);
+
+        primaryStage.setTitle("AlienDirection");
+        primaryStage.setScene(scene);
+        primaryStage.show();
     }
 
-    private void addMeteorite() {
-
-        for (int i = 0; i < 3; i++) {
-            int random_x = number.nextInt(50, 450);
-            Spaceship s = new Spaceship(random_x, 100, 30, 30, "enemy", Color.RED);
-            root.getChildren().add(s);
+    /**
+     * Modifies the position of the image view when an arrow key is pressed.
+     *
+     * @param event invoked this method
+     */
+    public void processKeyPress(KeyEvent event) {
+        switch (event.getCode()) {
+            case UP:
+                spaceshipImageView.setY(spaceshipImageView.getY() - MOVE_SPEED);
+                break;
+            case DOWN:
+                spaceshipImageView.setY(spaceshipImageView.getY() + MOVE_SPEED);
+                break;
+            case LEFT:
+                spaceshipImageView.setX(spaceshipImageView.getX() - MOVE_SPEED);
+                break;
+            case RIGHT:
+                spaceshipImageView.setX(spaceshipImageView.getX() + MOVE_SPEED);
+                break;
+            default:
+                break; // Does nothing if it's not an arrow key
         }
     }
 
-    private List<Spaceship> spaceObjects() {
-        return root.getChildren().stream().map(n -> (Spaceship)n).collect(Collectors.toList());
-    }
-
-    private void update() {
-        time += 0.016;
-
-        spaceObjects().forEach(object -> {
-            switch (object.getType()) {
-
-                case "spaceshipbullet":
-                    object.moveUp();
-
-                    spaceObjects().stream().filter(e -> e.getType().equals("enemy")).forEach(enemy -> {
-                        if (object.getBoundsInParent().intersects(enemy.getBoundsInParent())) {
-                            enemy.setDead(true);
-                            object.setDead(true);
-                        }
-                    });
-
-                    break;
-
-                case "enemy":
-                    object.moveDown();
-
-                    if (object.getBoundsInParent().intersects(spaceship.getBoundsInParent())) {
-                        spaceship.setDead(true);
-                        object.setDead(true);
-                    }
-
-                    if (object.getBoundsInParent().intersects(0.0, 750.0, 500.0, 30.0)) {
-                        object.setDead(true);
-                    }
-                    break;
-
-                case "spaceship":
-                    if (spaceship.collideWithWalls()) {
-                        spaceship.setDead(true);
-                        System.out.println("Dead");
-                    }
-            }
-        });
-
-        root.getChildren().removeIf(n -> {
-            Spaceship s = (Spaceship) n;
-            return s.isDead();
-        });
-
-        if (time > 2) {
-            time = 0;
-        }
-    }
-
-    @Override
-    public void start(Stage stage) throws Exception {
-        Scene scene = new Scene(createContent());
-
-        scene.setOnKeyPressed(e -> {
-            switch (e.getCode()) {
-                case LEFT:
-                    spaceship.moveLeft();
-                    break;
-                case RIGHT:
-                    spaceship.moveRight();
-                    break;
-                case UP:
-                    spaceship.moveUp();
-                    break;
-                case DOWN:
-                    spaceship.moveDown();
-                    break;
-                case SPACE:
-                    spaceship.shoot(root);
-                    break;
-            }
-        });
-
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    public static void main(String[] args) {
-        launch(args);
-    }
+    /**
+     * Launches the JavaFX application.
+     *
+     * @param args command line arguments
+     */
+//    public static void main(String[] args) {
+//        launch(args);
+//    }
 }

@@ -1,15 +1,19 @@
 package ca.bcit.comp2522.termproject.planetbandit;
 
+import ca.bcit.comp2522.termproject.planetbandit.Entities.Player;
+import ca.bcit.comp2522.termproject.planetbandit.Entities.Spaceship;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
 public class GamePlay extends Application {
     private final Stage stage = new Stage();
-    private final Map map = new Map();
-    private final String spaceship = "spaceship.png";
+    private final Space space = new Space();
     private final String spaceBackground = "space.jpg";
-    private final String character = "player.png";
 
+    private final Player player = new Player(100, 1, 100,
+            270, 450, 0, "Bob");
+
+    private final Spaceship spaceship = new Spaceship();
 
     /**
      * Displays an image that can be moved using the arrow keys.
@@ -17,7 +21,7 @@ public class GamePlay extends Application {
      * @param primaryStage a Stage
      */
     public void start(Stage primaryStage) {
-        map.start(stage, spaceship, spaceBackground);
+        space.start(stage, spaceship);
     }
 
     /**

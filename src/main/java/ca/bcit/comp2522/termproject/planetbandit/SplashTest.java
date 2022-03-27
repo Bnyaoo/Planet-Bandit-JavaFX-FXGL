@@ -12,7 +12,7 @@ import javafx.stage.StageStyle;
 
 import java.util.Random;
 
-public class SplashTest extends Application {
+public class SplashTest {
 
     private int itemsToLoad = 10000;
     private TilePane root;
@@ -57,8 +57,4 @@ public class SplashTest extends Application {
         int color = rand.nextInt(maxValue + 1 - minValue) + minValue;
         return color;
     }
-//
-//    public static void main(String[] args) {
-//        launch(args);
-//    }
 }

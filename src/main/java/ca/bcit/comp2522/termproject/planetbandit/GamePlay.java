@@ -10,9 +10,10 @@ public class GamePlay extends Application {
     private final Space space = new Space();
     private final String spaceBackground = "space.jpg";
 
-    private final Player player = new Player(100, 1, 100,
+    private final Player player = new Player(3, 1, 100,
             270, 450, 0, "Bob");
 
+    private final Riddles riddles = new Riddles(player);
     private final Spaceship spaceship = new Spaceship();
 
     /**

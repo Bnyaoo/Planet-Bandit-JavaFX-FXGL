@@ -11,7 +11,7 @@ import javafx.util.Duration;
 public class Platformer extends Application {
 
     @Override
-    public void start(Stage thirdStage) throws Exception{
+    public void start(Stage thirdStage) throws Exception {
         AnchorPane anchorPane = new AnchorPane();
 
         GameEntities gameEntities = new GameEntities(anchorPane);

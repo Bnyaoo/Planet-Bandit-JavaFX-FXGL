@@ -1,7 +1,7 @@
 package ca.bcit.comp2522.termproject.planetbandit;
 
 import ca.bcit.comp2522.termproject.planetbandit.Entities.Player;
-import ca.bcit.comp2522.termproject.planetbandit.Entities.Spaceship;
+// import ca.bcit.comp2522.termproject.planetbandit.Entities.Spaceship;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
@@ -14,15 +14,20 @@ public class GamePlay extends Application {
             270, 450, 0, "Bob");
 
     private final Riddles riddles = new Riddles(player);
-    private final Spaceship spaceship = new Spaceship();
+    private final SplashTest welcomeScreen = new SplashTest();
 
     /**
      * Displays an image that can be moved using the arrow keys.
      *
      * @param primaryStage a Stage
      */
-    public void start(Stage primaryStage) {
-        space.start(stage, spaceship);
+    public void start(Stage primaryStage) throws Exception {
+        welcomeScreen.start(stage);
+//        space.start(stage);
+    }
+
+    public Stage getStage() {
+        return stage;
     }
 
     /**

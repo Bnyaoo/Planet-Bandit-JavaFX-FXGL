@@ -196,8 +196,8 @@ public class Platformer extends GameApplication {
             FXGL.inc("lives", -1);
             setLevel(FXGL.geti("level"));
         } else {
-            FXGL.showMessage("游戏失败", () -> {
-                FXGL.showConfirm("是否重新开始", result -> {
+            FXGL.showMessage("You have died", () -> {
+                FXGL.showConfirm("Would you like to continue?", result -> {
                     if (result) {
                         FXGL.getGameController().startNewGame();
                     } else {

@@ -198,20 +198,20 @@ public class Space {
             Spaceship spaceship = new Spaceship();
             if (checkIfInBounds()) {
                 switch (event.getCode()) {
-                    case UP:
+                    case W:
                         this.setyCoordinate(this.getyCoordinate() - MOVE_SPEED);
                         playerImageView.setY(playerImageView.getY() - MOVE_SPEED);
                         break;
-                    case DOWN:
+                    case S:
                         this.setyCoordinate(this.getyCoordinate() + MOVE_SPEED);
                         playerImageView.setY(playerImageView.getY() + MOVE_SPEED);
 
                         break;
-                    case LEFT:
+                    case A:
                         this.setxCoordinate(this.getxCoordinate() - MOVE_SPEED);
                         playerImageView.setX(playerImageView.getX() - MOVE_SPEED);
                         break;
-                    case RIGHT:
+                    case D:
                         this.setxCoordinate(this.getxCoordinate() + MOVE_SPEED);
                         playerImageView.setX(playerImageView.getX() + MOVE_SPEED);
                         break;

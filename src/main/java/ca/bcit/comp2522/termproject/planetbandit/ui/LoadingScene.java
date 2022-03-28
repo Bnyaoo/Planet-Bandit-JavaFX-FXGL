@@ -30,11 +30,12 @@ public class LoadingScene extends com.almasb.fxgl.app.scene.LoadingScene {
                     .autoReverse(true)
                     .delay(Duration.seconds(i*0.5))
                     .repeatInfinitely()
-                    .fadeIn(textDot)
-                    .buildAndPlay();
+                    .fadeIn(textDot);
+                    //.buildAndPlay();
         }
 
         getContentRoot().getChildren().setAll(bg, text, box);
 
     }
 }
+

@@ -49,8 +49,8 @@ public class LevelEndScene extends SubScene {
                 .autoReverse(true)
                 .scale(textContinue)
                 .from(new Point2D(1, 1))
-                .to(new Point2D(1.25, 1.25))
-                .buildAndPlay();
+                .to(new Point2D(1.25, 1.25));
+                //.buildAndPlay();
 
 
         VBox vbox = new VBox(15, textUserTime, gradeBox,textContinue);
@@ -113,8 +113,8 @@ public class LevelEndScene extends SubScene {
             }
             builder.translate(gradeBox.getChildren().get(i))
                     .from(new Point2D(0, -500))
-                    .to(new Point2D(0, 0))
-                    .buildAndPlay();
+                    .to(new Point2D(0, 0));
+                    //.buildAndPlay();
         }
 
         FXGL.getSceneService().pushSubScene(this);

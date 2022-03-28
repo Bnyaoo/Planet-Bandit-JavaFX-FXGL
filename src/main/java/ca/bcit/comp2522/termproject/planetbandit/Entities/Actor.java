@@ -31,11 +31,6 @@ public abstract class Actor {
     protected double yCoordinate;
 
     /**
-     * Represents the actor's image file name as a string.
-     */
-    protected String imageName;
-
-    /**
      * Constructs an object of type Actor.
      *
      * @param health actor's health points as an int
@@ -45,13 +40,12 @@ public abstract class Actor {
      * @param yCoordinate actor's y-coordinate as a double
      */
     protected Actor(final int health, final int level, final int attackPower,
-                    final double xCoordinate, final double yCoordinate, final String imageName) {
+                    final double xCoordinate, final double yCoordinate) {
         this.health = health;
         this.attackPower = attackPower;
         this.level = level;
         this.xCoordinate = xCoordinate;
         this.yCoordinate = yCoordinate;
-        this.imageName = imageName;
     }
 
     /**
@@ -142,15 +136,6 @@ public abstract class Actor {
      */
     public void setyCoordinate(final double yCoordinate) {
         this.yCoordinate = yCoordinate;
-    }
-
-    /**
-     * Returns the image file name for this Actor.
-     *
-     * @return the image file name as a String.
-     */
-    public String getImageName() {
-        return imageName;
     }
 
     /**

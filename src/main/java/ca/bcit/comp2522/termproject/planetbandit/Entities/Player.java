@@ -12,7 +12,6 @@ public class Player extends Actor {
     private static final int THIRTY_ONE = 31;
     private int xp;
     private String name;
-    private final static String image = "player.png";
     /**
      * Constructs an object of type Player.
      *
@@ -25,8 +24,9 @@ public class Player extends Actor {
      * @param name player's name as a String
      */
     public Player(final int health, final int level, final int attackPower,
-                     final double xCoordinate, final double yCoordinate, final int xp, final String name) {
-        super(health, level, attackPower, xCoordinate, yCoordinate, image);
+                  final double xCoordinate, final double yCoordinate, final int xp,
+                  final String name) {
+        super(health, level, attackPower, xCoordinate, yCoordinate);
         this.xp = xp;
         this.name = name;
     }

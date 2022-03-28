@@ -9,7 +9,6 @@ public class Fugitive extends Actor {
     private static final int THIRTY_ONE = 31;
     // used to identify and track which inmates have been captured so far
     private int inmateNumber;
-    private final static String image = "player.png";
     /**
      * Constructs an object of type Actor.
      *
@@ -22,7 +21,7 @@ public class Fugitive extends Actor {
      */
     protected Fugitive(final int health, final int level, final int attackPower,
                        final double xCoordinate, final double yCoordinate, final int inmateNumber) {
-        super(health, level, attackPower, xCoordinate, yCoordinate, image);
+        super(health, level, attackPower, xCoordinate, yCoordinate);
         this.inmateNumber = inmateNumber;
     }
 

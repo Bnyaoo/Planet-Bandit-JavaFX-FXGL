@@ -1,0 +1,111 @@
+17:49:41.232 [main                     ] DEBUG Logger               - Configured Logger
+17:49:41.279 [main                     ] DEBUG GameApplication      - Logging settings
+Title: Untitled
+Version: 0.0
+Width: 1280
+Height: 720
+Fullscreen: false
+Intro: false
+Profiling: false
+Single step:false
+App Mode: DEVELOPER
+Menu Key: ESCAPE
+Stage Style: DECORATED
+Scene Factory: class ca.bcit.comp2522.termproject.planetbandit.Platformer$1
+
+17:49:41.811 [JavaFX Application Thread] DEBUG FXGLApplication      - Initializing FXGL
+17:49:41.819 [JavaFX Application Thread] INFO  Engine               - FXGL-17.1 (24.03.2022 17.34) on WINDOWS (J:17.0.1 FX:18)
+17:49:41.819 [JavaFX Application Thread] DEBUG Engine               - JRE Vendor Name: Oracle Corporation
+17:49:41.820 [JavaFX Application Thread] DEBUG Engine               - Running on OS: Windows 10 version 10.0
+17:49:41.820 [JavaFX Application Thread] DEBUG Engine               - Architecture: amd64
+17:49:41.820 [JavaFX Application Thread] INFO  Engine               - Source code and latest versions at: https://github.com/AlmasB/FXGL
+17:49:41.820 [JavaFX Application Thread] INFO  Engine               -       Ask questions and discuss at: https://github.com/AlmasB/FXGL/discussions
+17:49:41.821 [JavaFX Application Thread] INFO  Engine               -              Join the FXGL chat at: https://gitter.im/AlmasB/FXGL
+17:49:41.935 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Creating a JavaFX scene
+17:49:41.987 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Target settings size: 1280.0 x 720.0
+17:49:41.988 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Scaled scene size:    1280.0 x 720.0
+17:49:41.988 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Scaled ratio: (1.0, 1.0)
+17:49:41.989 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Set initial scene to FXGLStartupScene
+17:49:41.997 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Opening main window
+17:49:42.093 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Window border size: (16.0, 39.0)
+17:49:42.094 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Scaled size: 1280.0 x 720.0
+17:49:42.094 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Scaled ratio: (1.0, 1.0)
+17:49:42.095 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Scene size: 1280.0 x 720.0
+17:49:42.095 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Stage size: 1296.0 x 759.0
+17:49:42.103 [FXGL Background Thread 1 ] DEBUG Engine               - Initializing environment variables
+17:49:42.153 [FXGL Background Thread 1 ] DEBUG FXGLAssetLoaderServi - User app class for loading assets: class ca.bcit.comp2522.termproject.planetbandit.Platformer
+17:49:42.153 [FXGL Background Thread 1 ] DEBUG GameApplicationServi - Applying CSS: fxgl_dark.css
+17:49:42.154 [FXGL Background Thread 1 ] DEBUG FXGLAssetLoaderServi - Loading from file system: jar:file:///C:/Users/Benny%20Chao/.m2/repository/com/github/almasb/fxgl/17.1/fxgl-17.1.jar!/fxglassets/ui/css/fxgl_dark.css
+17:49:42.222 [FXGL Background Thread 1 ] DEBUG GameApplicationServi - Initializing application scenes
+17:49:42.293 [FXGL Background Thread 1 ] DEBUG GameWorld            - Game world initialized
+17:49:42.360 [FXGL Background Thread 1 ] DEBUG PhysicsWorld         - Physics world initialized: appHeight=720, physics.ppm=50.0
+17:49:42.361 [FXGL Background Thread 1 ] DEBUG PhysicsWorld         - Using strategy: BRUTE_FORCE
+17:49:42.366 [FXGL Background Thread 1 ] DEBUG GameScene            - Game scene initialized: 1280x720
+17:49:42.378 [FXGL Background Thread 1 ] DEBUG FXGL.DefaultMenu     - createMenuBodyGameMenu()
+17:49:42.403 [FXGL Background Thread 1 ] DEBUG FXGL.DefaultMenu     - createOptionsMenu()
+17:49:42.417 [FXGL Background Thread 1 ] DEBUG FXGLAssetLoaderServi - Loading from file system: jar:file:///C:/Users/Benny%20Chao/.m2/repository/com/github/almasb/fxgl/17.1/fxgl-17.1.jar!/fxglassets/textures/particles/smoke.png
+17:49:42.583 [FXGL Background Thread 1 ] DEBUG FXGLAssetLoaderServi - Loading from file system: jar:file:///C:/Users/Benny%20Chao/.m2/repository/com/github/almasb/fxgl/17.1/fxgl-17.1.jar!/fxglassets/textures/particles/trace_horizontal.png
+17:49:42.654 [FXGL Background Thread 1 ] DEBUG GameApplicationServi - Application scenes initialized
+17:49:42.667 [FXGL Background Thread 1 ] DEBUG SystemBundleService  - Loading FXGL system data
+17:49:42.673 [FXGL Background Thread 1 ] DEBUG FileSystemAccess     - Reading from: C:\Users\Benny Chao\IdeaProjects\522-202210-Term-Project-Planet-Bandit\system\fxgl.bundle
+17:49:42.681 [FXGL Background Thread 1 ] DEBUG SystemBundleService  - Bundle FXGL: {}
+17:49:42.681 [FXGL Background Thread 1 ] DEBUG UpdaterService       - Checking for updates
+17:49:42.686 [FXGL Background Thread 4 ] DEBUG FXGLApplication      - Loading fonts
+17:49:42.686 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from file system: jar:file:///C:/Users/Benny%20Chao/.m2/repository/com/github/almasb/fxgl/17.1/fxgl-17.1.jar!/fxglassets/ui/fonts/VarelaRound-Regular.ttf
+17:49:42.686 [FXGL Background Thread 1 ] DEBUG FXGLApplication      - Loading default localization
+17:49:42.687 [FXGL Background Thread 1 ] DEBUG FXGLAssetLoaderServi - Loading from file system: jar:file:///C:/Users/Benny%20Chao/.m2/repository/com/github/almasb/fxgl/17.1/fxgl-17.1.jar!/fxglassets/languages/english.lang
+17:49:42.710 [FXGL Background Thread 1 ] INFO  FXGLApplication      - FXGL initialization took: 0.606 sec
+17:49:42.723 [JavaFX Application Thread] DEBUG Input                - Registered new binding: left - A
+17:49:42.724 [JavaFX Application Thread] DEBUG Input                - Registered new binding: right - D
+17:49:42.724 [JavaFX Application Thread] DEBUG Input                - Registered new binding: jump - W
+17:49:42.725 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Use - E
+17:49:42.725 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Users/Benny%20Chao/IdeaProjects/522-202210-Term-Project-Planet-Bandit/target/classes/assets/music/BGM_dash_runner.wav
+17:49:42.753 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from file system: jar:file:///C:/Users/Benny%20Chao/.m2/repository/com/github/almasb/fxgl/17.1/fxgl-17.1.jar!/fxglassets/ui/fonts/Abel-Regular.ttf
+17:49:42.758 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from file system: jar:file:///C:/Users/Benny%20Chao/.m2/repository/com/github/almasb/fxgl/17.1/fxgl-17.1.jar!/fxglassets/ui/fonts/TerminalLandMono-Regular.otf
+17:49:42.764 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from file system: jar:file:///C:/Users/Benny%20Chao/.m2/repository/com/github/almasb/fxgl/17.1/fxgl-17.1.jar!/fxglassets/ui/fonts/Courier-Prime.ttf
+17:49:42.956 [JavaFX Application Thread] DEBUG AudioPlayer          - Playing music com.almasb.fxgl.audio.Music@4dc9fd19
+17:49:42.956 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from file system: jar:file:///C:/Users/Benny%20Chao/.m2/repository/com/github/almasb/fxgl/17.1/fxgl-17.1.jar!/fxglassets/textures/fxgl_icon.png
+17:49:43.001 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from file system: jar:file:///C:/Users/Benny%20Chao/.m2/repository/com/github/almasb/fxgl/17.1/fxgl-17.1.jar!/fxglassets/textures/fxgl_default_cursor.png
+17:49:43.006 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Screenshot - CTRL+8
+17:49:43.007 [JavaFX Application Thread] DEBUG Input                - Registered new binding: System info dump - CTRL+9
+17:49:43.007 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Restart - CTRL+R
+17:49:43.008 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Toggle Debug Camera - CTRL+7
+17:49:43.011 [JavaFX Application Thread] DEBUG LoopRunner           - Starting loop
+17:49:43.011 [JavaFX Application Thread] DEBUG LoopRunner           - Initializing JavaFX AnimationTimerLoop
+17:49:43.013 [JavaFX Application Thread] DEBUG GameApplicationServi - Starting new game
+17:49:43.014 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+17:49:43.030 [JavaFX Application Thread] DEBUG GameApplicationServi - Removing overlay from FXGLStartupScene and adding to MarioLoadingScene
+17:49:43.030 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - FXGLStartupScene -> MarioLoadingScene
+17:49:43.030 [JavaFX Application Thread] DEBUG GameApplicationServi - Clearing previous game
+17:49:43.030 [JavaFX Application Thread] DEBUG GameScene            - Clearing game scene
+17:49:43.031 [JavaFX Application Thread] DEBUG GameWorld            - Clearing game world
+17:49:43.031 [JavaFX Application Thread] DEBUG PhysicsWorld         - Clearing physics world
+17:49:43.032 [FXGL Background Thread 4 ] DEBUG FXGLApplication      - Initializing game
+17:49:43.034 [JavaFX Application Thread] DEBUG FXGLApplication      - Registering font factories with UI factory
+17:49:43.038 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Users/Benny%20Chao/IdeaProjects/522-202210-Term-Project-Planet-Bandit/target/classes/assets/textures/ice/ice_disappear.png
+17:49:43.104 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Users/Benny%20Chao/IdeaProjects/522-202210-Term-Project-Planet-Bandit/target/classes/assets/textures/ice/iceWater.png
+17:49:43.106 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Users/Benny%20Chao/IdeaProjects/522-202210-Term-Project-Planet-Bandit/target/classes/assets/textures/ice/collideCoin.png
+17:49:43.170 [FXGL Background Thread 4 ] WARN  TMXLevelLoader       - TiledMap generated from 1.2.3. Supported version: 1.4.2. Some features may not be parsed fully.
+17:49:43.199 [FXGL Background Thread 4 ] DEBUG TMXLevelLoader       - Parsed TiledMap: file:/C:/Users/Benny%20Chao/IdeaProjects/522-202210-Term-Project-Planet-Bandit/target/classes/assets/levels/tmx/level6.tmx
+17:49:43.201 [FXGL Background Thread 4 ] DEBUG TMXLevelLoader       - Creating tile layer entities
+17:49:43.203 [FXGL Background Thread 4 ] DEBUG TilesetLoader        - Loading view for layer 块层 1
+17:49:43.210 [FXGL Background Thread 4 ] DEBUG TilesetLoader        - Created buffer with size 2940.0x700.0
+17:49:43.258 [FXGL Background Thread 4 ] DEBUG TMXLevelLoader       - Creating object layer entities
+17:49:43.278 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Users/Benny%20Chao/IdeaProjects/522-202210-Term-Project-Planet-Bandit/target/classes/assets/textures/ice/iceBlock.png
+17:49:43.303 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Users/Benny%20Chao/IdeaProjects/522-202210-Term-Project-Planet-Bandit/target/classes/assets/textures/ice/tundra_140x40.png
+17:49:43.311 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Users/Benny%20Chao/IdeaProjects/522-202210-Term-Project-Planet-Bandit/target/classes/assets/textures/button.png
+17:49:43.333 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Users/Benny%20Chao/IdeaProjects/522-202210-Term-Project-Planet-Bandit/target/classes/assets/textures/coinGold.png
+17:49:43.351 [FXGL Background Thread 4 ] DEBUG GameWorld            - Clearing removable entities
+17:49:43.351 [FXGL Background Thread 4 ] DEBUG GameWorld            - Setting level: com.almasb.fxgl.entity.level.Level@65c3da07
+17:49:43.440 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Users/Benny%20Chao/IdeaProjects/522-202210-Term-Project-Planet-Bandit/target/classes/assets/textures/player.png
+17:49:43.447 [FXGL Background Thread 4 ] INFO  FXGLApplication      - Game initialization took: 0.415 sec
+17:49:43.447 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+17:49:43.461 [JavaFX Application Thread] DEBUG GameApplicationServi - Removing overlay from MarioLoadingScene and adding to GameScene
+17:49:43.462 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - MarioLoadingScene -> GameScene
+17:49:45.649 [JavaFX Application Thread] DEBUG FXGLApplication      - Exiting FXGL
+17:49:45.649 [JavaFX Application Thread] DEBUG LoopRunner           - Stopping loop
+17:49:45.650 [JavaFX Application Thread] DEBUG SystemBundleService  - Saving FXGL system data
+17:49:45.652 [JavaFX Application Thread] DEBUG FileSystemAccess     - Writing to: C:\Users\Benny Chao\IdeaProjects\522-202210-Term-Project-Planet-Bandit\system\fxgl.bundle
+17:49:45.654 [JavaFX Application Thread] DEBUG Async                - Shutting down background threads
+17:49:45.654 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Closing main window
+17:49:45.666 [JavaFX Application Thread] DEBUG Logger               - Closing Logger

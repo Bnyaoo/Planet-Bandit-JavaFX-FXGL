@@ -17,6 +17,7 @@ Bnyaoo
 
 ## References:
 - https://github.com/AlmasB/FXTutorials/blob/master/src/main/java/com/almasb/invaders/SpaceInvadersApp.java
+- https://github.com/AlmasB/FXGLGames/tree/master/Mario
 
 
 ## Any important comments you'd like to make about your work:

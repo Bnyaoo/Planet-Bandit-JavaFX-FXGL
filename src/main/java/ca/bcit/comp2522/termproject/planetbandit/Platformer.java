@@ -182,7 +182,7 @@ public class Platformer extends GameApplication {
         });
 
 
-        FXGL.onCollision(EntityType.PLAYER, EntityType.LASER, (player, laser)->{
+        FXGL.onCollision(EntityType.PLAYER, EntityType.LASER, (player, laser)-> {
             playerDead();
         });
 
@@ -232,7 +232,7 @@ public class Platformer extends GameApplication {
         FXGL.set("levelTime", 0.0);
         Level level = FXGL.setLevelFromMap("tmx/level" + levelNum + ".tmx");
         boolean bgExists = level.getProperties().exists("bgImageName");
-        String bgImageName ;
+        String bgImageName;
         if (bgExists) {
              bgImageName = level.getProperties().getString("bgImageName");
         }else {

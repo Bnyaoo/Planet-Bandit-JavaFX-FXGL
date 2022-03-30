@@ -80,7 +80,7 @@ public class SplashScreen{
     private void initSplash(Stage primaryStage, Runnable initializeMethod, InitCompletionHandler showGameMethod) {
         final Scene splashScene = new Scene(splashLayout, Color.BLACK);
         final Rectangle2D bounds = Screen.getPrimary().getBounds();
-        final FadeTransition fade = new FadeTransition(Duration.millis(9000),splashLayout);
+        final FadeTransition fade = new FadeTransition(Duration.millis(1000),splashLayout);
         fade.setFromValue(0);
         fade.setToValue(1);
         fade.play();

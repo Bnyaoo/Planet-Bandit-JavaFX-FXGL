@@ -22,7 +22,7 @@ public class GamePlay extends Application {
      * @param primaryStage a Stage
      */
     public void start(Stage primaryStage) throws Exception {
-        welcomeScreen.start(stage);
+        space.start(stage);
     }
 
     public Stage getStage() {

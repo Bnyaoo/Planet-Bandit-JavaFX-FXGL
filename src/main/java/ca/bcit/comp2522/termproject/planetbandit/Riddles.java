@@ -1,6 +1,7 @@
 package ca.bcit.comp2522.termproject.planetbandit;
 
 import ca.bcit.comp2522.termproject.planetbandit.Entities.Player;
+import com.almasb.fxgl.entity.Entity;
 
 import java.util.HashMap;
 import java.util.Random;
@@ -14,7 +15,7 @@ import java.util.Scanner;
  */
 public class Riddles {
     private static final int TOTAL_NUMBER_OF_RIDDLES = 32;
-    private final Player player;
+    private final Entity player;
     private int riddleIndex;
     private final HashMap<String, String> riddles;
     private final Random random;
@@ -26,7 +27,7 @@ public class Riddles {
      *
      * @param player a Player object
      */
-    public Riddles(final Player player) {
+    public Riddles(final Entity player) {
         this.player = player;
         //this.totalNumberOfRiddles = 32;
         riddles = new HashMap<>();
@@ -72,14 +73,14 @@ public class Riddles {
         riddles.put("People make me, save me, change me, raise me. What am I?", "Money");
     }
 
-    private String getRiddle() {
+    public String getRiddle() {
 
         riddleIndex = random.nextInt(0, TOTAL_NUMBER_OF_RIDDLES);
         Object riddle = riddles.keySet().toArray()[riddleIndex];
         return (String) riddle;
     }
 
-    private String getAnswer() {
+    public String getAnswer() {
         Object firstKey = riddles.keySet().toArray()[riddleIndex];
         return riddles.get(firstKey);
     }
@@ -108,7 +109,7 @@ public class Riddles {
         if (guessedCorrectly) {
             System.out.println("Correct!");
         } else {
-            player.setHealth(player.getHealth() - 1);
+            //player.setHealth(player.getHealth() - 1);
             System.out.println("Incorrect the answer was '" + getAnswer() + "'");
         }
     }

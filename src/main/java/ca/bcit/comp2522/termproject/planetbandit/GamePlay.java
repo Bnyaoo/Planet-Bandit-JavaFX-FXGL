@@ -13,7 +13,7 @@ public class GamePlay extends Application {
     private final Player player = new Player(3, 1, 100,
             270, 450, 0, "Bob");
 
-    private final Riddles riddles = new Riddles(player);
+    //private final Riddles riddles = new Riddles(player);
     private final SplashTest welcomeScreen = new SplashTest();
     /**
      * Displays an image that can be moved using the arrow keys.
@@ -21,7 +21,7 @@ public class GamePlay extends Application {
      * @param primaryStage a Stage
      */
     public void start(Stage primaryStage) throws Exception {
-        space.start(stage);
+        welcomeScreen.start(stage);
     }
 
     public Stage getStage() {

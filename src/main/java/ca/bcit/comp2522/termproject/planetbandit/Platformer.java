@@ -42,6 +42,7 @@ public class Platformer extends GameApplication {
             new LazyValue<>(LevelEndScene::new);
 
     public Entity player;
+    private Riddles riddles = new Riddles(player);
 
     @Override
     protected void initSettings(GameSettings settings) {
@@ -125,7 +126,7 @@ public class Platformer extends GameApplication {
         vars.put("level", STARTING_LEVEL);
         vars.put("levelTime", 0.0);
         vars.put("score", 0);
-        vars.put("lives", 3);
+        vars.put("lives", 5);
     }
 
     @Override
@@ -164,7 +165,7 @@ public class Platformer extends GameApplication {
         FXGL.onCollisionBegin(EntityType.PLAYER, EntityType.DOOR_BOT, (player, doorBot) -> {
             System.out.println("Level Completed");
             getGameScene().getViewport().fade(() -> {
-                FXGL.showMessage("You have successfully captured the fugitive!", () -> {
+                FXGL.showMessage(riddles.getRiddle(), () -> {
                     FXGL.showConfirm("Move on to the next planet?", result -> {
                         if (result) {
                             nextLevel();

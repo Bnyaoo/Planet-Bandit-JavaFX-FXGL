@@ -1,6 +1,5 @@
 package ca.bcit.comp2522.termproject.planetbandit;
 
-//import ca.bcit.comp2522.termproject.planetbandit.Entities.Spaceship;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -10,251 +9,302 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-        import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
-
 import java.util.Random;
 
 /**
- * Represents a spaceship object.
+ * Represents a space object.
  *
  * @author Prab and Benny
  * @version 2022
  */
 public class Space {
+    /* background image file name */
+    private static final String BACKGROUND_IMG_NAME = "space.jpg";
 
-    // Contains the image of the spaceship
+    // Frame sizes
+    private static final int APP_WIDTH = 1280;
+    private static final int APP_HEIGHT = 720;
+
+    // Contains the image of the background
     private ImageView backgroundImageView;
 
-    private static String backgroundImgName = "space.jpg";
+    // Objects needed in this class
+    private final Spaceship spaceship;
+    private final Coin coin;
 
-    public static final int appWidth = 1280;
-    public static final int appHeight = 720;
 
     private Group root;
-
     private Stage stage;
 
-
     /**
-     * Displays an image that can be moved using the arrow keys.
-     *
-     * @param primaryStage a Stage
+     * Constructs a space object.
      */
-    public void start(Stage primaryStage) {
-        this.stage = primaryStage;
-        Spaceship spaceship1 = new Spaceship();
-        Coin coin = new Coin(70, 200);
-//        Image player = new Image(spaceship.getImageName(), true);
-//        playerImageView = new ImageView(player);
-//        playerImageView.setFitHeight(100);
-//        playerImageView.setFitWidth(60);
-//
-//        playerImageView.setX(spaceship.getxCoordinate());
-//        playerImageView.setY(spaceship.getyCoordinate());
-
-
-        Image background = new Image(backgroundImgName, true);
-        backgroundImageView = new ImageView(background);
-        backgroundImageView.setFitHeight(appHeight);
-        backgroundImageView.setFitWidth(appWidth);
-
-//        Font font1 = new Font("Courier", 50);
-//        final int dreamX = 30;
-//        final int dreamY = 300;
-//        Text text1 = new Text(dreamX, dreamY, "Dream Big");
-//        text1.setFont(Font.font("Courier", FontWeight.BOLD, FontPosture.REGULAR, 100));
-//        text1.setFill(Color.RED);
-
-        root = new Group(backgroundImageView, coin.imageView, spaceship1.playerImageView);
-//        meteorite.addCoins(root);
-
-
-        Scene scene = new Scene(root, appWidth, appHeight, Color.BLACK);
-
-
-        // Register the key listener here
-        scene.setOnKeyPressed(event -> {
-            try {
-                spaceship1.processKeyPress(event, coin);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        });
-        stage.setTitle("Planet Bandit");
-        stage.setScene(scene);
-        stage.show();
-
+    public Space() {
+        this.spaceship = new Spaceship();
+        // Starting coordinates for coin
+        int coinXcoordinate = 70;
+        int coinYcoordinate = 200;
+        this.coin = new Coin(coinXcoordinate, coinYcoordinate);
 
     }
 
 
-    //    /**
-//     * Modifies the position of the image view when an arrow key is pressed.
-//     *
-//     * @param event invoked this method
-//     */
-//    public void processKeyPress(KeyEvent event) {
-//        switch (event.getCode()) {
-//            case UP:
-//                playerImageView.setY(playerImageView.getY() - MOVE_SPEED);
-//                break;
-//            case DOWN:
-//                playerImageView.setY(playerImageView.getY() + MOVE_SPEED);
-//                break;
-//            case LEFT:
-//                playerImageView.setX(playerImageView.getX() - MOVE_SPEED);
-//                break;
-//            case RIGHT:
-//                playerImageView.setX(playerImageView.getX() + MOVE_SPEED);
-//                break;
-//            default:
-//                break; // Does nothing if it's not an arrow key
-//        }
-//    }
+    /**
+     * Initializes the space mini-game.
+     *
+     * @param primaryStage a Stage
+     */
+    public void start(final Stage primaryStage) {
+        this.stage = primaryStage;
 
+        Image background = new Image(BACKGROUND_IMG_NAME, true);
+        backgroundImageView = new ImageView(background);
+        backgroundImageView.setFitHeight(APP_HEIGHT);
+        backgroundImageView.setFitWidth(APP_WIDTH);
+
+        // root contains all elements of the game
+        root = new Group(backgroundImageView, coin.imageView, spaceship.playerImageView);
+        // scene is the frame we see
+        Scene scene = new Scene(root, APP_WIDTH, APP_HEIGHT, Color.BLACK);
+
+
+        // Register the key listener here
+        scene.setOnKeyPressed(event -> spaceship.processKeyPress(event, coin));
+        stage.setTitle("Planet Bandit");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    /**
+     * Represents a spaceship object.
+     *
+     * @author Prab and Benny
+     * @version 2022
+     */
     public class Spaceship {
-        private static int health = 3;
+        private int health = 3;
         private int xCoordinate;
         private int yCoordinate;
-        private final static String image = "spaceship.png";
         private boolean alive;
-        public static final int MOVE_SPEED = 25;
-        private ImageView playerImageView;
-        Image player = new Image(this.getImageName(), true);
+        private final ImageView playerImageView;
         private int coinsCollected = 0;
-        boolean gameOver = false;
+        private boolean gameOver = false;
 
+        /**
+         * Constructs a spaceship object.
+         */
         public Spaceship() {
+            //starting coordinates of spaceship
             this.xCoordinate = 270;
             this.yCoordinate = 450;
             this.alive = true;
-            playerImageView = new ImageView(player);
+            // assigns image characteristics of spaceship
+            Image spaceshipImg = new Image(getImageName(), true);
+            playerImageView = new ImageView(spaceshipImg);
             playerImageView.setFitHeight(100);
             playerImageView.setFitWidth(60);
-
             playerImageView.setX(this.getxCoordinate());
             playerImageView.setY(this.getyCoordinate());
 
         }
 
-        public static int getHealth() {
-            return health;
+        /**
+         * Returns the spaceship health.
+         *
+         * @return an int that represents the spaceships health
+         */
+        public int getHealth() {
+            return this.health;
         }
 
+        /**
+         * Sets the spaceship health.
+         *
+         * @param health represents the spaceships new health
+         */
+        public void setHealth(final int health) {
+            this.health = health;
+        }
+
+        /**
+         * Returns the image name.
+         *
+         * @return a string that represents the image name
+         */
         public static String getImageName() {
-            return image;
+            return "spaceship.png";
         }
 
-        public int getxCoordinate() {
-            return xCoordinate;
-        }
-
-        public int getyCoordinate() {
-            return yCoordinate;
-        }
-
-        public void setxCoordinate(int xCoordinate) {
-            this.xCoordinate = xCoordinate;
-        }
-
-        public void setyCoordinate(int yCoordinate) {
-            this.yCoordinate = yCoordinate;
-        }
-
-        public boolean isAlive() {
-            return alive;
-        }
-
-        public void setAlive(boolean alive) {
-            this.alive = alive;
-        }
-
-//        public static void setHealth(int health) {
-//            ca.bcit.comp2522.termproject.planetbandit.Entities.Spaceship.health = health;
-//        }
-
+        /**
+         * Gets the spaceship's imageview.
+         *
+         * @return an imageview object
+         */
         public ImageView getPlayerImageView() {
             return playerImageView;
         }
 
-        public boolean checkIfInBounds() {
-            if (this.getxCoordinate() <= 0 || this.getxCoordinate() >= Space.appWidth - 60
-                    || this.getyCoordinate() <= 0 || this.getyCoordinate() >= Space.appHeight - 100) {
-                return false;
-            }
-            return true;
+        /**
+         * Returns the spaceships x-coordinate.
+         *
+         * @return the spaceships x-coordinate.
+         */
+        public int getxCoordinate() {
+            return xCoordinate;
         }
 
-        public boolean collides(Coin coin) {
-            if (playerImageView.getBoundsInParent().intersects(coin.imageView.getBoundsInParent())) {
-                return true;
-            }
-            return false;
+        /**
+         * Returns the spaceships y-coordinate.
+         *
+         * @return the spaceships y-coordinate.
+         */
+        public int getyCoordinate() {
+            return yCoordinate;
+        }
+
+        /**
+         * Sets the spaceships x-coordinate.
+         *
+         * @param xCoordinate the spaceships new x-coordinate
+         */
+        public void setxCoordinate(final int xCoordinate) {
+            this.xCoordinate = xCoordinate;
+        }
+
+        /**
+         * Sets the spaceships y-coordinate.
+         *
+         * @param yCoordinate the spaceships new y-coordinate
+         */
+        public void setyCoordinate(final int yCoordinate) {
+            this.yCoordinate = yCoordinate;
+        }
+
+        /**
+         * Determines if the spaceship is alive or not.
+         *
+         * @return a boolean value
+         */
+        public boolean isAlive() {
+            return alive;
+        }
+
+        /**
+         * Sets the living state of the spaceship object.
+         *
+         * @param alive a boolean value
+         */
+        public void setAlive(final boolean alive) {
+            this.alive = alive;
+        }
+
+        /**
+         * Returns the total number of coins collected.
+         *
+         * @return an int that represents the number of coins collected
+         */
+        public int getCoinsCollected() {
+            return coinsCollected;
+        }
+
+        /**
+         * Sets the number of coins collected.
+         *
+         * @param coinsCollected the new number of coins collected
+         */
+        public void setCoinsCollected(final int coinsCollected) {
+            this.coinsCollected = coinsCollected;
+        }
+
+        /**
+         * Determines if the game has ended.
+         *
+         * @return a boolean value
+         */
+        public boolean isGameOver() {
+            return gameOver;
+        }
+
+        /**
+         * Sets the state of the game.
+         *
+         * @param gameOver a boolean value
+         */
+        public void setGameOver(final boolean gameOver) {
+            this.gameOver = gameOver;
+        }
+
+        /**
+         * Determines if the spaceship is within the frame.
+         *
+         * @return a boolean value
+         */
+        public boolean checkIfInBounds() {
+            int spaceshipWidth = 60;
+            int spaceshipHeight = 100;
+            return this.getxCoordinate() > 0 && this.getxCoordinate() < Space.APP_WIDTH - spaceshipWidth
+                    && this.getyCoordinate() > 0 && this.getyCoordinate() < Space.APP_HEIGHT - spaceshipHeight;
+        }
+
+        /**
+         * Determines if a spaceship has collided with a coin.
+         *
+         * @param collisionCoin a Coin object
+         * @return a boolean value
+         */
+        public boolean collidesWithCoin(final Coin collisionCoin) {
+            return playerImageView.getBoundsInParent().intersects(collisionCoin.imageView.getBoundsInParent());
         }
 
         /**
          * Modifies the position of the image view when an arrow key is pressed.
          *
          * @param event invoked this method
+         * @param currentCoin a Coin object
          */
-        public void processKeyPress(KeyEvent event, Coin coin) throws InterruptedException {
+        public void processKeyPress(final KeyEvent event, final Coin currentCoin) {
 
             if (checkIfInBounds() && isAlive()) {
-                if (collides(coin)) {
+                if (collidesWithCoin(currentCoin)) {
                     coinsCollected++;
-                    coin.addCoins(this);
+                    currentCoin.addCoins(this);
                     System.out.println("collided!");
                 }
+                int moveSpeed = 25;
                 switch (event.getCode()) {
-                    case W:
-                        this.setyCoordinate(this.getyCoordinate() - MOVE_SPEED);
-                        playerImageView.setY(playerImageView.getY() - MOVE_SPEED);
-//                        if (collides(coin)) {
-//                            System.out.println("collided!");
-//                            coinsCollected++;
-//                            coin.addCoins(this);
-//
-//                        }
-                        break;
-                    case S:
-                        this.setyCoordinate(this.getyCoordinate() + MOVE_SPEED);
-                        playerImageView.setY(playerImageView.getY() + MOVE_SPEED);
-//                        if (collides(coin)) {
-//                            System.out.println("collided!");
-//                            coinsCollected++;
-//                            coin.addCoins(this);
-//                        }
-                        break;
-                    case A:
-                        this.setxCoordinate(this.getxCoordinate() - MOVE_SPEED);
-                        playerImageView.setX(playerImageView.getX() - MOVE_SPEED);
-                        if (collides(coin)) {
-                            System.out.println("collided!");
-                            coin.addCoins(this);
-                        }
-                        break;
-                    case D:
-                        this.setxCoordinate(this.getxCoordinate() + MOVE_SPEED);
-                        playerImageView.setX(playerImageView.getX() + MOVE_SPEED);
-//                        if (collides(coin)) {
-//                            System.out.println("collided!");
-//                            coinsCollected++;
-//                            coin.addCoins(this);
-//                        }
-                        break;
-                    default:
-                        break; // Does nothing if it's not an arrow key
+                    case W -> {
+                        this.setyCoordinate(this.getyCoordinate() - moveSpeed);
+                        playerImageView.setY(playerImageView.getY() - moveSpeed);
+                    }
+                    case S -> {
+                        this.setyCoordinate(this.getyCoordinate() + moveSpeed);
+                        playerImageView.setY(playerImageView.getY() + moveSpeed);
+                    }
+                    case A -> {
+                        this.setxCoordinate(this.getxCoordinate() - moveSpeed);
+                        playerImageView.setX(playerImageView.getX() - moveSpeed);
+                    }
+                    case D -> {
+                        this.setxCoordinate(this.getxCoordinate() + moveSpeed);
+                        playerImageView.setX(playerImageView.getX() + moveSpeed);
+                    }
+                    default -> {
+                    } // Does nothing if it's not an arrow key
                 }
             } else {
-                if (gameOver == false) {
+                if (!isGameOver()) {
                     this.setAlive(false);
                     changeScreen();
                 }
-                gameOver = true;
+                setGameOver(true);
             }
         }
 
+        /**
+         * Switches the screens display something new on the screen.
+         */
         public void changeScreen() {
             System.out.println("Total coins collected: " + coinsCollected);
             final int dreamX = 375;
@@ -267,62 +317,119 @@ public class Space {
 
     }
 
-
+    /**
+     * Represents a coin object.
+     *
+     * @author Prab and Benny
+     * @version 2022
+     */
     public class Coin {
-        private int xCoordinate = 60;
+        private int xCoordinate;
         private int yCoordinate;
-        int velocity = 10;
-        boolean visible;
-        private final static String image = "coin.gif";
-        private boolean alive;
-        private ImageView imageView;
-        Image meteorite = new Image(image, true);
-        Random random = new Random();
+        private final ImageView imageView;
+        private final Random random = new Random();
+        private final int coinHeight;
+        private final int coinWidth;
 
-        public Coin(int x, int y) {
-            this.visible = true;
+        /**
+         * Constructs a coin object.
+         * @param x an int that represents the x-coordinate
+         * @param y an int that represents the y-coordinate
+         */
+        public Coin(final int x, final int y) {
+            // sets the starting coordinates of the coin
             this.xCoordinate = x;
-            imageView = new ImageView(meteorite);
-            imageView.setFitHeight(80);
-            imageView.setFitWidth(70);
+            this.yCoordinate = y;
+            String image = "coin.gif";
+            Image coinImg = new Image(image, true);
+            imageView = new ImageView(coinImg);
 
+            // Sets the size of the coin on the screen
+            coinHeight = 80;
+            coinWidth = 70;
+            imageView.setFitHeight(coinHeight);
+            imageView.setFitWidth(coinWidth);
+
+            // Places the coin at starting coordinates
             imageView.setX(x);
             imageView.setY(y);
 
         }
 
+        /**
+         * Returns the coins x-coordinate.
+         *
+         * @return an int that represents the coins x-coordinate
+         */
         public int getxCoordinate() {
             return xCoordinate;
         }
 
+        /**
+         * Returns the coins y-coordinate.
+         *
+         * @return an int that represents the coins y-coordinate
+         */
         public int getyCoordinate() {
             return yCoordinate;
         }
 
-        public void setxCoordinate(int xCoordinate) {
+        /**
+         * Sets the coins x-coordinate.
+         *
+         * @param xCoordinate the new x-coordinate
+         */
+        public void setxCoordinate(final int xCoordinate) {
             this.xCoordinate = xCoordinate;
         }
 
-        public void setyCoordinate(int yCoordinate) {
+        /**
+         * Sets the coins y-coordinate.
+         *
+         * @param yCoordinate the new y-coordinate
+         */
+        public void setyCoordinate(final int yCoordinate) {
             this.yCoordinate = yCoordinate;
         }
 
+        /**
+         * Returns the coin's height.
+         *
+         * @return an int
+         */
+        public int getCoinHeight() {
+            return coinHeight;
+        }
 
-        public void addCoins(Spaceship spaceship) {
-            int x = random.nextInt(70, 1210);
-            int y = random.nextInt(80, 640);
-            Coin coin = new Coin(x, y);
-            root = new Group(backgroundImageView, coin.imageView, spaceship.playerImageView);
-            Scene scene = new Scene(root, appWidth, appHeight, Color.BLACK);
+        /**
+         * Returns the coin's width.
+         *
+         * @return an int
+         */
+        public int getCoinWidth() {
+            return coinWidth;
+        }
+
+        /**
+         * Adds a coin to the screen.
+         *
+         * @param currentSpaceship a spaceship object
+         */
+        public void addCoins(final Spaceship currentSpaceship) {
+            // generates random coordinates for the coin
+            int xPosition = random.nextInt(getCoinHeight(), APP_WIDTH - getCoinWidth());
+            int yPosition = random.nextInt(getCoinHeight(), APP_HEIGHT - getCoinHeight());
+
+            // creates new coin
+            Coin newCoin = new Coin(xPosition, yPosition);
+
+            // adds coin to new group
+            root = new Group(backgroundImageView, newCoin.imageView, currentSpaceship.playerImageView);
+            // place new group in the scene
+            Scene scene = new Scene(root, APP_WIDTH, APP_HEIGHT, Color.BLACK);
 
             // Register the key listener here
-            scene.setOnKeyPressed(event -> {
-                try {
-                    spaceship.processKeyPress(event, coin);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            });
+            scene.setOnKeyPressed(event -> currentSpaceship.processKeyPress(event, newCoin));
             stage.setTitle("Planet Bandit");
             stage.setScene(scene);
             stage.show();

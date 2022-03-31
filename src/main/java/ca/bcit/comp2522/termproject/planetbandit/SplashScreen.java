@@ -51,26 +51,21 @@ import javafx.stage.StageStyle;
  * @author Eudy Contreras
  *
  */
-public class SplashScreen{
+public class SplashScreen {
 
     private FadeTransition fadeSplash;
-
     private Pane splashLayout;
-
     private ImageView splash;
-
     private int splashWidth;
     private int splashHeight;
-
     private Image splash_image;
 
     public SplashScreen(Stage stage, Image splash_Image, Runnable initializeMethod, InitCompletionHandler showGameMethod) {
         this.splash_image = splash_Image;
         this.splash = new ImageView(splash_image);
-//        this.splashWidth = (int) splash.getImage().getWidth();
-//        this.splashHeight = (int) splash.getImage().getHeight();
-        this.splashWidth = 900;
-        this.splashHeight = 600;
+        this.splash.setFitWidth(1280);
+        this.splashWidth = 1280;
+        this.splashHeight = 720;
         this.splashLayout = new StackPane();
         this.splashLayout.getChildren().addAll(splash);
         this.splashLayout.setBackground(Background.fill(Color.BLACK));
@@ -98,9 +93,6 @@ public class SplashScreen{
             showSplashScreen(primaryStage, task,showGameMethod);
         });
         primaryStage.setScene(splashScene);
-//        primaryStage.setX(bounds.getMinX() + bounds.getWidth() / 2 - splashWidth / 2);
-//        primaryStage.setY(bounds.getMinY() + bounds.getHeight() / 2 - splashHeight / 2);
-
         primaryStage.initStyle(StageStyle.DECORATED);
         primaryStage.setAlwaysOnTop(true);
         primaryStage.show();

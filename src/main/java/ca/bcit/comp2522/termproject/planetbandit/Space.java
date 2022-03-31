@@ -22,11 +22,6 @@ import java.util.Random;
  * @version 2022
  */
 public class Space {
-    // Distance in pixels that the spaceship moves when a key is pressed
-//    public static final int MOVE_SPEED = 15;
-
-    // Contains the image of the spaceship
-//    private ImageView playerImageView;
 
     // Contains the image of the spaceship
     private ImageView backgroundImageView;
@@ -128,6 +123,7 @@ public class Space {
         private ImageView playerImageView;
         Image player = new Image(this.getImageName(), true);
         private int coinsCollected = 0;
+        boolean gameOver = false;
 
         public Spaceship() {
             this.xCoordinate = 270;
@@ -204,26 +200,31 @@ public class Space {
          */
         public void processKeyPress(KeyEvent event, Coin coin) throws InterruptedException {
 
-            if (checkIfInBounds()) {
+            if (checkIfInBounds() && isAlive()) {
+                if (collides(coin)) {
+                    coinsCollected++;
+                    coin.addCoins(this);
+                    System.out.println("collided!");
+                }
                 switch (event.getCode()) {
                     case W:
                         this.setyCoordinate(this.getyCoordinate() - MOVE_SPEED);
                         playerImageView.setY(playerImageView.getY() - MOVE_SPEED);
-                        if (collides(coin)) {
-                            System.out.println("collided!");
-                            coinsCollected++;
-                            coin.addCoins(this);
-
-                        }
+//                        if (collides(coin)) {
+//                            System.out.println("collided!");
+//                            coinsCollected++;
+//                            coin.addCoins(this);
+//
+//                        }
                         break;
                     case S:
                         this.setyCoordinate(this.getyCoordinate() + MOVE_SPEED);
                         playerImageView.setY(playerImageView.getY() + MOVE_SPEED);
-                        if (collides(coin)) {
-                            System.out.println("collided!");
-                            coinsCollected++;
-                            coin.addCoins(this);
-                        }
+//                        if (collides(coin)) {
+//                            System.out.println("collided!");
+//                            coinsCollected++;
+//                            coin.addCoins(this);
+//                        }
                         break;
                     case A:
                         this.setxCoordinate(this.getxCoordinate() - MOVE_SPEED);
@@ -236,19 +237,21 @@ public class Space {
                     case D:
                         this.setxCoordinate(this.getxCoordinate() + MOVE_SPEED);
                         playerImageView.setX(playerImageView.getX() + MOVE_SPEED);
-                        if (collides(coin)) {
-                            System.out.println("collided!");
-                            coinsCollected++;
-                            coin.addCoins(this);
-                        }
+//                        if (collides(coin)) {
+//                            System.out.println("collided!");
+//                            coinsCollected++;
+//                            coin.addCoins(this);
+//                        }
                         break;
                     default:
                         break; // Does nothing if it's not an arrow key
                 }
             } else {
-                this.setAlive(false);
-                changeScreen();
-
+                if (gameOver == false) {
+                    this.setAlive(false);
+                    changeScreen();
+                }
+                gameOver = true;
             }
         }
 

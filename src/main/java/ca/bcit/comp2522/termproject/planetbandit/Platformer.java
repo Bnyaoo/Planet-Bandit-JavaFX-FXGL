@@ -42,7 +42,7 @@ public class Platformer extends GameApplication {
             new LazyValue<>(LevelEndScene::new);
 
     public Entity player;
-    private Riddles riddles = new Riddles(player);
+    private Riddles riddles = new Riddles();
 
     @Override
     protected void initSettings(GameSettings settings) {

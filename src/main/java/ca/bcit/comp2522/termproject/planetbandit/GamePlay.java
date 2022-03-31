@@ -15,7 +15,6 @@ public class GamePlay extends Application {
 
     private final Riddles riddles = new Riddles(player);
     private final SplashTest welcomeScreen = new SplashTest();
-
     /**
      * Displays an image that can be moved using the arrow keys.
      *

@@ -25,7 +25,7 @@ public class PlayerComponent extends Component {
     public PlayerComponent() {
         Image image = FXGL.image("player.png");
 
-        animIdle = new AnimationChannel(image, 4, 32, 42, Duration.seconds(1), 1, 1);
+        animIdle = new AnimationChannel(image, 4, 32, 42, Duration.seconds(1), 0, 0);
         animWalk = new AnimationChannel(image, 4, 32, 42, Duration.seconds(1), 0, 3);
 
         texture = new AnimatedTexture(animIdle);

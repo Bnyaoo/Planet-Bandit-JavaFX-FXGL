@@ -94,7 +94,7 @@ public class EntityFactory implements com.almasb.fxgl.entity.EntityFactory {
                 .type(EntityType.DOOR_BOT)
                 .bbox(new HitBox(BoundingShape.box(data.<Integer>get("width"), data.<Integer>get("height"))))
                 .opacity(0)
-                .with(new CollidableComponent(false))
+                .with(new CollidableComponent(true))
                 .build();
     }
 

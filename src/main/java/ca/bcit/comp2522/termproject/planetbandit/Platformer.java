@@ -30,10 +30,13 @@ import javafx.util.Duration;
 
 import java.util.Map;
 
+import static com.almasb.fxgl.dsl.FXGLForKtKt.getGameScene;
+import static com.almasb.fxgl.dsl.FXGLForKtKt.showMessage;
+
 public class Platformer extends GameApplication {
 
-    private static final int MAX_LEVEL = 7;
-    private static final int STARTING_LEVEL = 5;
+    private static final int MAX_LEVEL = 2;
+    private static final int STARTING_LEVEL = 0;
 
     private LazyValue<LevelEndScene> levelEndSceneValue =
             new LazyValue<>(LevelEndScene::new);
@@ -158,10 +161,19 @@ public class Platformer extends GameApplication {
             makeExitDoor();
         });
 
-        FXGL.onCollisionOneTimeOnly(EntityType.PLAYER, EntityType.DOOR_BOT, (player, doorBot) -> {
-            System.out.println("fdasfasfdsa");
-            levelEndSceneValue.get().onLevelFinish();
-            FXGL.getGameScene().getViewport().fade(this::nextLevel);
+        FXGL.onCollisionBegin(EntityType.PLAYER, EntityType.DOOR_BOT, (player, doorBot) -> {
+            System.out.println("Level Completed");
+            getGameScene().getViewport().fade(() -> {
+                FXGL.showMessage("You have successfully captured the fugitive!", () -> {
+                    FXGL.showConfirm("Move on to the next planet?", result -> {
+                        if (result) {
+                            nextLevel();
+                        } else {
+                            FXGL.getGameController().exit();
+                        }
+                    });
+                });
+            });
         });
 
         FXGL.onCollisionBegin(EntityType.PLAYER, EntityType.KEY_PROMPT, (player, keyPrompt) -> {
@@ -216,10 +228,12 @@ public class Platformer extends GameApplication {
 
     private void nextLevel() {
         if (FXGL.geti("level") == MAX_LEVEL) {
-
-            FXGL.set("level", 1);
+            showMessage("Congratulations, you have captured all the fugitives!");
+            return;
         }
-        FXGL.inc("level", 1);
+
+        FXGL.inc("level", +1);
+
         setLevel(FXGL.geti("level"));
 
     }

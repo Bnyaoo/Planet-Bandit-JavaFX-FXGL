@@ -1,8 +1,5 @@
 package ca.bcit.comp2522.termproject.planetbandit;
 
-import ca.bcit.comp2522.termproject.planetbandit.Entities.Player;
-import com.almasb.fxgl.entity.Entity;
-
 import java.util.HashMap;
 import java.util.Random;
 import java.util.Scanner;
@@ -15,7 +12,6 @@ import java.util.Scanner;
  */
 public class Riddles {
     private static final int TOTAL_NUMBER_OF_RIDDLES = 32;
-    private final Entity player;
     private int riddleIndex;
     private final HashMap<String, String> riddles;
     private final Random random;
@@ -24,11 +20,8 @@ public class Riddles {
 
     /**
      * Constructs a riddle object.
-     *
-     * @param player a Player object
      */
-    public Riddles(final Entity player) {
-        this.player = player;
+    public Riddles() {
         //this.totalNumberOfRiddles = 32;
         riddles = new HashMap<>();
         random = new Random();
@@ -73,13 +66,20 @@ public class Riddles {
         riddles.put("People make me, save me, change me, raise me. What am I?", "Money");
     }
 
+    /**
+     * Returns a riddle from the hashmap.
+     * @return a string
+     */
     public String getRiddle() {
-
         riddleIndex = random.nextInt(0, TOTAL_NUMBER_OF_RIDDLES);
         Object riddle = riddles.keySet().toArray()[riddleIndex];
         return (String) riddle;
     }
 
+    /**
+     * Returns the answer to the riddle from the hashmap.
+     * @return a string
+     */
     public String getAnswer() {
         Object firstKey = riddles.keySet().toArray()[riddleIndex];
         return riddles.get(firstKey);

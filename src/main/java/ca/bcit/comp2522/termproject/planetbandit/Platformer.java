@@ -35,7 +35,7 @@ import static com.almasb.fxgl.dsl.FXGLForKtKt.showMessage;
 
 public class Platformer extends GameApplication {
 
-    private static final int MAX_LEVEL = 2;
+    private static final int MAX_LEVEL = 3;
     private static final int STARTING_LEVEL = 0;
 
     private LazyValue<LevelEndScene> levelEndSceneValue =

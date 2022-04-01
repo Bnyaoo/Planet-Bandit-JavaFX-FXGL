@@ -17,9 +17,13 @@ Prab-Bains
 Bnyaoo
 
 ## References:
+Code:
 - https://github.com/AlmasB/FXTutorials/blob/master/src/main/java/com/almasb/invaders/SpaceInvadersApp.java
 - https://github.com/AlmasB/FXGLGames/tree/master/Mario
 - https://github.com/chris-thompson/2522-202210-JavaFX-Examples.git
+
+Artwork, Music, and Other Assets:
+- https://opengameart.org/content/animated-warrior
 
 ## Controls:
 - Use W, A, S and D to move the character

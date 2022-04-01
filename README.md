@@ -21,6 +21,7 @@ Code:
 - https://github.com/AlmasB/FXTutorials/blob/master/src/main/java/com/almasb/invaders/SpaceInvadersApp.java
 - https://github.com/AlmasB/FXGLGames/tree/master/Mario
 - https://github.com/chris-thompson/2522-202210-JavaFX-Examples.git
+- https://github.com/Siderim/video-game-menu/blob/master/Main.java
 
 Artwork, Music, and Other Assets:
 - https://opengameart.org/content/animated-warrior

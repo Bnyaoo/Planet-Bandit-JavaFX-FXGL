@@ -25,8 +25,8 @@ public class DisplaySplashScreen {
      * Displays the actual game screen once we are done displaying the splash screen.
      */
     private void showGame() {
-        Space space = new Space();
+        MainMenu mainMenu = new MainMenu();
         GamePlay gamePlay = new GamePlay();
-        space.start(gamePlay.getStage());
+        mainMenu.start(gamePlay.getStage());
     }
 }

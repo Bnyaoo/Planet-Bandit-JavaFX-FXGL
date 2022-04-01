@@ -6,7 +6,7 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 
 public class GamePlay extends Application {
-    private final Stage stage = new Stage();
+    private Stage stage = new Stage();
     private final Space space = new Space();
     private final String spaceBackground = "space.jpg";
 

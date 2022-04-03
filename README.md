@@ -29,9 +29,56 @@ Artwork, Music, and Other Assets:
 
 ## Controls:
 - Use W, A, S and D to move the character
+- Press W key twice to double jump
 
 ## Rules:
-- Do not touch spikes or the edge of the frame otherwise your character will lose a life
+### Terrain: ###
+- Coming in contact with spikes results in the loss of one life.
+- ![image info](./resources/assets/textures/spikes.png)
+
+
+- Coming in contact with a laser beam results in the loss of one life.
+- ![image info](./resources/assets/textures/lasers.png)
+
+
+- Jumping on a trampoline launches your character forward to reach otherwise unreachable platforms.
+- ![image info](./resources/assets/textures/springboardUp.png)
+
+
+- Temporary platforms allow the player to stand on it momentarily; idling on these platforms usually results in the 
+  loss of one life.
+
+
+- ![image info](./resources/assets/textures/ice/iceBlock.png)
+
+
+- Moving platforms allow the player to automatically bridge gaps between terrain. In later stages, idling on a 
+  moving platform may result in the loss of one life.
+
+
+- ![image info](./resources/assets/textures/ice/tundra_140x40.png)
+
+
+- Bodies of water, similar to spikes, will result in the loss of a life.
+
+- ![image info](./resources/assets/textures/ice/iceWater.png)
+
+### Objective: ###
+
+- Reach the end of the map and solve the riddle that the fugitive provides to progress to the next stage.
+
+### Fugitives: ###
+
+- Avacyn - The Tarnished
+- ![image info](./resources/assets/textures/bosses/Avacyn.png)
+
+
+- Geralf - Visionary Stitcher
+- ![image info](./resources/assets/textures/bosses/Geralf.png)
+
+
+- Jin - Progress Tyrant
+- ![image info](./resources/assets/textures/bosses/Jin.png)
 
 ## Any important comments you'd like to make about your work:
 ### Sprint 1 Comments:

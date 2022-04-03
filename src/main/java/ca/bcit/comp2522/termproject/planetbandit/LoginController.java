@@ -23,7 +23,7 @@ public class LoginController {
     private Button submitButton;
     
     @FXML
-    public void login(ActionEvent event) throws SQLException{
+    public void login(ActionEvent event) throws SQLException, ClassNotFoundException {
     
     	Window owner = submitButton.getScene().getWindow();
     	
@@ -46,6 +46,7 @@ public class LoginController {
     	
     	JdbcDao jdbcDao = new JdbcDao();
     	boolean flag = jdbcDao.validate(emailId, password);
+        jdbcDao.init();
 
     	if(!flag) {
     		infoBox("Please enter correct Email and Password", null, "Failed");

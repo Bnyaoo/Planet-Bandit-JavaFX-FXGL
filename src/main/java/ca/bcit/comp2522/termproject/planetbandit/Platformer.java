@@ -198,10 +198,6 @@ public class Platformer extends GameApplication {
         FXGL.onCollision(EntityType.PLAYER, EntityType.LASER, (player, laser)-> {
             playerDead();
         });
-
-
-
-
     }
 
     private void playerDead() {

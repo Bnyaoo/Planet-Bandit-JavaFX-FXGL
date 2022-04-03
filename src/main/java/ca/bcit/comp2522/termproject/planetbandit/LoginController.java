@@ -46,7 +46,6 @@ public class LoginController {
     	
     	JdbcDao jdbcDao = new JdbcDao();
     	boolean flag = jdbcDao.validate(emailId, password);
-        jdbcDao.init();
 
     	if(!flag) {
     		infoBox("Please enter correct Email and Password", null, "Failed");

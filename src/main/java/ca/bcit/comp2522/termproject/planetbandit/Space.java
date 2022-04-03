@@ -37,6 +37,8 @@ public class Space {
 
     private Group root;
     private Stage stage;
+    private Text text1;
+
 
     /**
      * Constructs a space object.
@@ -47,7 +49,10 @@ public class Space {
         int coinXcoordinate = 70;
         int coinYcoordinate = 200;
         this.coin = new Coin(coinXcoordinate, coinYcoordinate);
-
+        int coinsCollected = 0;
+        final int textx = 1100;
+        final int texty = 50;
+        this.text1 = new Text(textx, texty, "Coins:" + coinsCollected);
     }
 
 
@@ -64,11 +69,15 @@ public class Space {
         backgroundImageView.setFitHeight(APP_HEIGHT);
         backgroundImageView.setFitWidth(APP_WIDTH);
 
+        /* Coins collected Text*/
+        text1.setFont(Font.font("Courier", FontWeight.BOLD, FontPosture.REGULAR, 30));
+        text1.setFill(Color.YELLOW);
+
+
         // root contains all elements of the game
-        root = new Group(backgroundImageView, coin.imageView, spaceship.playerImageView);
+        root = new Group(backgroundImageView, coin.imageView, spaceship.playerImageView, text1);
         // scene is the frame we see
         Scene scene = new Scene(root, APP_WIDTH, APP_HEIGHT, Color.BLACK);
-
 
         // Register the key listener here
         scene.setOnKeyPressed(event -> spaceship.processKeyPress(event, coin));
@@ -91,6 +100,7 @@ public class Space {
         private final ImageView playerImageView;
         private int coinsCollected = 0;
         private boolean gameOver = false;
+        private boolean gameWon = false;
 
         /**
          * Constructs a spaceship object.
@@ -228,12 +238,30 @@ public class Space {
         }
 
         /**
+         * Determines if the game has been beat.
+         *
+         * @return a boolean value
+         */
+        public boolean isGameWon() {
+            return gameWon;
+        }
+
+        /**
          * Sets the state of the game.
          *
          * @param gameOver a boolean value
          */
         public void setGameOver(final boolean gameOver) {
             this.gameOver = gameOver;
+        }
+
+        /**
+         * Sets the state of the game.
+         *
+         * @param gameWon a boolean value
+         */
+        public void setGameWon(final boolean gameWon) {
+            this.gameWon = gameWon;
         }
 
         /**
@@ -261,16 +289,24 @@ public class Space {
         /**
          * Modifies the position of the image view when an arrow key is pressed.
          *
-         * @param event invoked this method
+         * @param event       invoked this method
          * @param currentCoin a Coin object
          */
         public void processKeyPress(final KeyEvent event, final Coin currentCoin) {
-
-            if (checkIfInBounds() && isAlive()) {
+            /* Coins collected Text*/
+            if (checkIfInBounds() && isAlive() && coinsCollected < 10) {
                 if (collidesWithCoin(currentCoin)) {
                     coinsCollected++;
                     currentCoin.addCoins(this);
-                    System.out.println("collided!");
+                    final int x = 1100;
+                    final int y = 50;
+                    root.getChildren().remove(text1);
+                    text1 = new Text(x, y, "Coins:" + coinsCollected);
+                    text1.setFont(Font.font("Courier", FontWeight.BOLD, FontPosture.REGULAR, 30));
+                    text1.setFill(Color.YELLOW);
+
+                    root.getChildren().add(text1);
+
                 }
                 int moveSpeed = 25;
                 switch (event.getCode()) {
@@ -294,25 +330,46 @@ public class Space {
                     } // Does nothing if it's not an arrow key
                 }
             } else {
-                if (!isGameOver()) {
+                if (coinsCollected >= 2) {
                     this.setAlive(false);
-                    changeScreen();
+                    setGameWon(true);
+                    setGameOver(false);
                 }
-                setGameOver(true);
+
+                if (!checkIfInBounds()) {
+                    setGameOver(true);
+                    setGameWon(false);
+
+                }
+                changeScreen();
+
             }
+
         }
 
         /**
          * Switches the screens display something new on the screen.
          */
         public void changeScreen() {
-            System.out.println("Total coins collected: " + coinsCollected);
-            final int dreamX = 375;
-            final int dreamY = 350;
-            Text text1 = new Text(dreamX, dreamY, "GAME OVER");
-            text1.setFont(Font.font("Courier", FontWeight.BOLD, FontPosture.REGULAR, 100));
-            text1.setFill(Color.RED);
-            root.getChildren().add(text1);
+            Text text2 = null;
+
+            if (isGameOver()) {
+                final int dreamX = 375;
+                final int dreamY = 350;
+                text2 = new Text(dreamX, dreamY, "GAME OVER");
+                text2.setFill(Color.RED);
+                text2.setFont(Font.font("Courier", FontWeight.BOLD, FontPosture.REGULAR, 100));
+            }
+
+            if (gameWon) {
+                final int x = 75;
+                final int y = 350;
+                text2 = new Text(x, y, "You have arrived at the next planet!");
+                text2.setFill(Color.GREEN);
+                text2.setFont(Font.font("Courier", FontWeight.BOLD, FontPosture.REGULAR, 50));
+            }
+
+            root.getChildren().add(text2);
         }
 
     }
@@ -333,6 +390,7 @@ public class Space {
 
         /**
          * Constructs a coin object.
+         *
          * @param x an int that represents the x-coordinate
          * @param y an int that represents the y-coordinate
          */

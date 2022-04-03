@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.8" tiledversion="1.8.2" orientation="orthogonal" renderorder="right-down" width="60" height="20" tilewidth="70" tileheight="70" infinite="0" nextlayerid="6" nextobjectid="198">
+ <properties>
+  <property name="bgImageName" value="forest.png"/>
+  <property name="star1time" type="float" value="27"/>
+ </properties>
+ <tileset firstgid="1" name="base_w70_h70_s2" tilewidth="70" tileheight="70" spacing="2" margin="2" tilecount="156" columns="12">
+  <image source="base_70_s2.png" width="914" height="936"/>
+ </tileset>
+ <tileset firstgid="157" name="building_w70_h70_s0" tilewidth="70" tileheight="70" tilecount="98" columns="14">
+  <image source="building_70_s0.png" width="980" height="490"/>
+ </tileset>
+ <tileset firstgid="255" name="candy_w70_h70_s0" tilewidth="70" tileheight="70" tilecount="98" columns="14">
+  <image source="candy_70_s0.png" width="980" height="490"/>
+ </tileset>
+ <tileset firstgid="353" name="ice_w70_h70_s0" tilewidth="70" tileheight="70" tilecount="98" columns="14">
+  <image source="ice_70_s0.png" width="980" height="490"/>
+ </tileset>
+ <tileset firstgid="451" name="industry_w70_h70_s0" tilewidth="70" tileheight="70" tilecount="98" columns="14">
+  <image source="industry_70_s0.png" width="980" height="490"/>
+ </tileset>
+ <tileset firstgid="549" name="tiles_spritesheet" tilewidth="70" tileheight="70" spacing="2" tilecount="156" columns="12">
+  <image source="tiles_spritesheet.png" width="914" height="936"/>
+ </tileset>
+ <layer id="5" name="块层 1" width="60" height="20">
+  <data encoding="csv">
+0,0,0,0,526,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,525,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+157,158,159,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,160,0,161,161,0,161,161,161,0,161,162,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+171,172,173,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,174,175,175,175,175,175,175,175,175,175,176,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+185,186,187,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,188,189,189,189,189,189,189,189,189,189,190,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+160,161,162,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,157,158,159,188,189,189,189,190,157,158,159,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,206,
+174,175,176,539,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,171,172,173,160,161,161,161,162,171,172,173,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,65,0,220,
+188,189,190,0,0,0,0,0,0,157,158,159,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,185,186,187,174,175,175,175,176,185,186,187,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,163,164,165,
+163,164,165,0,0,0,0,0,525,174,175,176,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,185,186,187,171,172,172,172,173,185,186,187,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,177,178,179,
+177,178,179,0,0,0,0,0,0,188,189,190,0,0,0,0,0,525,174,175,176,0,0,0,0,0,0,0,185,186,187,171,172,172,172,173,185,186,187,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,191,192,193,
+191,192,193,0,0,0,0,0,0,185,186,187,0,0,0,0,0,0,185,186,187,0,0,0,0,0,0,0,185,186,187,171,172,172,172,173,185,186,187,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <objectgroup id="2" name="对象层 1">
+  <object id="138" type="platform" x="3.48786" y="144.739" width="204.5" height="70"/>
+  <object id="140" type="springboard" x="330.303" y="687.879"/>
+  <object id="144" type="platform" x="631.053" y="486.212" width="206.5" height="70"/>
+  <object id="147" type="laser" x="552.485" y="591.879">
+   <properties>
+    <property name="color" value="#FF00FF"/>
+    <property name="dir" value="left"/>
+    <property name="pauseTime" type="int" value="1500"/>
+    <property name="range" type="float" value="350"/>
+   </properties>
+  </object>
+  <object id="148" type="laser" x="318" y="76">
+   <properties>
+    <property name="color" value="#FF004D"/>
+    <property name="dir" value="down"/>
+    <property name="pauseTime" type="int" value="1000"/>
+    <property name="range" type="float" value="650"/>
+   </properties>
+  </object>
+  <object id="150" type="laser" x="284" y="456">
+   <properties>
+    <property name="color" value="#F47BA0"/>
+    <property name="dir" value="right"/>
+    <property name="pauseTime" type="int" value="1500"/>
+    <property name="range" type="float" value="400"/>
+   </properties>
+  </object>
+  <object id="151" type="movePlatform" x="940.667" y="150">
+   <properties>
+    <property name="isHor" type="bool" value="false"/>
+    <property name="millis" type="int" value="2500"/>
+    <property name="speed" type="int" value="240"/>
+   </properties>
+  </object>
+  <object id="158" type="platform" x="1263.42" y="632.333" width="210.5" height="70"/>
+  <object id="160" type="springboard" x="1572" y="685.333"/>
+  <object id="162" type="movePlatform" x="1808.67" y="152">
+   <properties>
+    <property name="isHor" type="bool" value="false"/>
+    <property name="millis" type="int" value="2500"/>
+    <property name="speed" type="int" value="240"/>
+   </properties>
+  </object>
+  <object id="163" type="platform" x="1191.08" y="631" width="71.5" height="70"/>
+  <object id="164" type="laser" x="1184.29" y="663.061">
+   <properties>
+    <property name="color" value="#85E87F"/>
+    <property name="dir" value="left"/>
+    <property name="pauseTime" type="int" value="1500"/>
+    <property name="range" type="float" value="350"/>
+   </properties>
+  </object>
+  <object id="165" type="laser" x="2658" y="104">
+   <properties>
+    <property name="color" value="#F25A5A"/>
+    <property name="dir" value="left"/>
+    <property name="pauseTime" type="int" value="840"/>
+    <property name="range" type="float" value="620"/>
+   </properties>
+  </object>
+  <object id="166" type="platform" x="1961.42" y="139.667" width="67.8333" height="70"/>
+  <object id="167" type="platform" x="2030.08" y="209" width="67.8333" height="70"/>
+  <object id="168" type="platform" x="2100.75" y="139.667" width="137.167" height="70"/>
+  <object id="169" type="platform" x="2240.75" y="210.333" width="67.8333" height="70"/>
+  <object id="170" type="platform" x="2520.75" y="210.333" width="67.8333" height="70"/>
+  <object id="171" type="platform" x="2311.42" y="138.333" width="207.833" height="70"/>
+  <object id="172" type="platform" x="2591.42" y="138.333" width="67.8333" height="70"/>
+  <object id="173" type="platform" x="2660.75" y="78.3333" width="67.8333" height="60.6667"/>
+  <object id="174" type="platform" x="1962.08" y="494.333" width="205.167" height="274"/>
+  <object id="175" type="platform" x="2662.08" y="143" width="67.8333" height="219.334"/>
+  <object id="176" type="platform" x="1962.08" y="213.667" width="67.8333" height="166"/>
+  <object id="177" type="platform" x="2168.08" y="543" width="349.167" height="224.667"/>
+  <object id="178" type="platform" x="2518.75" y="493.667" width="209.167" height="274"/>
+  <object id="179" type="coin" x="2326.67" y="512">
+   <point/>
+  </object>
+  <object id="180" type="movePlatform" x="2881.33" y="152">
+   <properties>
+    <property name="isHor" type="bool" value="false"/>
+    <property name="millis" type="int" value="2500"/>
+    <property name="speed" type="int" value="240"/>
+   </properties>
+  </object>
+  <object id="181" type="platform" x="558.25" y="561" width="71.5" height="70"/>
+  <object id="182" type="platform" x="212.25" y="417" width="71.5" height="70"/>
+  <object id="183" type="platform" x="280.25" y="1" width="71.5" height="70"/>
+  <object id="184" type="tempPlatform" x="3012.08" y="209" width="67.8333" height="70"/>
+  <object id="186" type="tempPlatform" x="3594.08" y="469" width="67.8333" height="70"/>
+  <object id="187" type="tempPlatform" x="3083.42" y="353" width="137.167" height="70"/>
+  <object id="188" type="tempPlatform" x="3271.42" y="629" width="137.167" height="70"/>
+  <object id="189" type="tempPlatform" x="3500.08" y="561" width="67.8333" height="70"/>
+  <object id="190" type="tempPlatform" x="3694.08" y="395" width="67.8333" height="70"/>
+  <object id="192" type="tempPlatform" x="3783.42" y="317" width="137.167" height="70"/>
+  <object id="195" type="exitSign" gid="255" x="3991" y="491" width="70" height="70"/>
+  <object id="196" type="doorBot" x="4124.08" y="419" width="67.8333" height="70"/>
+  <object id="197" type="platform" x="3992.08" y="493" width="207.833" height="70"/>
+ </objectgroup>
+</map>

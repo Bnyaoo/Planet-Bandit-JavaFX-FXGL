@@ -25,6 +25,7 @@ Code:
 
 Artwork, Music, and Other Assets:
 - https://opengameart.org/content/animated-warrior
+- https://cdnb.artstation.com/p/assets/images/images/029/514/221/large/santiago-banol-yandros-image.jpg?1597790275
 
 ## Controls:
 - Use W, A, S and D to move the character

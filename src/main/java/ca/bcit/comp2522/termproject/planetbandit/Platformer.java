@@ -38,7 +38,7 @@ public class Platformer extends GameApplication {
     private static final int MAX_LEVEL = 3;
     private static final int STARTING_LEVEL = 0;
 
-    private LazyValue<LevelEndScene> levelEndSceneValue =
+    private final LazyValue<LevelEndScene> levelEndSceneValue =
             new LazyValue<>(LevelEndScene::new);
 
     public Entity player;
@@ -131,8 +131,9 @@ public class Platformer extends GameApplication {
 
     @Override
     protected void onPreInit() {
-        FXGL.getSettings().setGlobalMusicVolume(0.25);
-        FXGL.loopBGM("BGM_dash_runner.wav");
+        FXGL.getSettings().setGlobalMusicVolume(0.05);
+        FXGL.getSettings().setGlobalSoundVolume(0.05);
+//        FXGL.loopBGM("level1.wav");
     }
 
     @Override
@@ -192,11 +193,13 @@ public class Platformer extends GameApplication {
 
         FXGL.onCollisionBegin(EntityType.PLAYER, EntityType.SPIKE, (player, spikes) -> {
             playerDead();
+            FXGL.play("dead.wav");
         });
 
 
         FXGL.onCollision(EntityType.PLAYER, EntityType.LASER, (player, laser)-> {
             playerDead();
+            FXGL.play("dead.wav");
         });
     }
 
@@ -242,6 +245,8 @@ public class Platformer extends GameApplication {
         }
         FXGL.set("levelTime", 0.0);
         Level level = FXGL.setLevelFromMap("tmx/level" + levelNum + ".tmx");
+        FXGL.getAudioPlayer().stopAllMusic();
+        FXGL.loopBGM("level" + levelNum + ".wav");
         boolean bgExists = level.getProperties().exists("bgImageName");
         String bgImageName;
         if (bgExists) {
@@ -261,6 +266,7 @@ public class Platformer extends GameApplication {
         FXGL.inc("levelTime", tpf);
         if (player.getY() > FXGL.getAppHeight()) {
             if (player.getY() > FXGL.getAppHeight()) {
+                FXGL.play("dead.wav");
                 playerDead();
             }
         }

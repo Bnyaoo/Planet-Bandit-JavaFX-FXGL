@@ -1,5 +1,6 @@
 package ca.bcit.comp2522.termproject.planetbandit;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -7,6 +8,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import javafx.stage.Window;
 
 import java.sql.SQLException;
@@ -23,7 +25,7 @@ public class LoginController {
     private Button submitButton;
     
     @FXML
-    public void login(ActionEvent event) throws SQLException, ClassNotFoundException {
+    public void login(ActionEvent event) throws Exception {
     
     	Window owner = submitButton.getScene().getWindow();
     	
@@ -50,7 +52,10 @@ public class LoginController {
     	if(!flag) {
     		infoBox("Please enter correct Email and Password", null, "Failed");
     	}else {
-    		infoBox("Login Successful!", null, "Failed");
+    		infoBox("Login Successful!", null, "Success");GamePlay gamePlay = new GamePlay();
+            gamePlay = new GamePlay();
+            Stage stage = new Stage();
+            gamePlay.start(stage);
     	}
     }
     

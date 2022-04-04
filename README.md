@@ -97,6 +97,7 @@ Artwork, Music, and Other Assets:
 - https://i.pinimg.com/474x/1b/cf/e3/1bcfe3609d55b6f5f9f3e753a67a9d5c.jpg
 - https://itch.io/queue/c/948368/sci-fi-series?game_id=868076
 - https://preview.redd.it/9kqdzxexajn71.png?width=640&crop=smart&auto=webp&s=ecbed1bb2645aad8bbe31382c8a6189b7031a74c
+- https://img.freepik.com/free-vector/pixel-art-heart-icon_41992-1611.jpg
 - https://www.youtube.com/watch?v=YmbdqcbWgnI
 - https://www.youtube.com/watch?v=AgzE2TeXCl0
 - https://www.youtube.com/watch?v=QtCbgadN3Rc

@@ -48,7 +48,7 @@
  </layer>
  <objectgroup id="2" name="对象层 1">
   <object id="138" type="platform" x="3.48786" y="144.739" width="204.5" height="70"/>
-  <object id="140" type="springboard" x="330.303" y="687.879"/>
+  <object id="140" type="springboard" x="336.303" y="659.879"/>
   <object id="144" type="platform" x="631.053" y="486.212" width="206.5" height="70"/>
   <object id="147" type="laser" x="552.485" y="591.879">
    <properties>
@@ -82,7 +82,7 @@
    </properties>
   </object>
   <object id="158" type="platform" x="1263.42" y="632.333" width="210.5" height="70"/>
-  <object id="160" type="springboard" x="1572" y="685.333"/>
+  <object id="160" type="springboard" x="1572" y="663.333"/>
   <object id="162" type="movePlatform" x="1808.67" y="152">
    <properties>
     <property name="isHor" type="bool" value="false"/>

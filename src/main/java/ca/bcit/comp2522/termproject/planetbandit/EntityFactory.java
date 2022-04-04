@@ -186,7 +186,7 @@ public class EntityFactory implements com.almasb.fxgl.entity.EntityFactory {
         return entityBuilder(data)
                 .type(EntityType.MOVE_PLATFORM)
                 .collidable()
-                .viewWithBBox(texture("ice/tundra_140x40.png"))
+                .viewWithBBox(texture("ice/movingHologramBlock.png"))
                 .with(physics)
                 .with(new MovePlatformComponent(data))
                 .build();
@@ -199,7 +199,7 @@ public class EntityFactory implements com.almasb.fxgl.entity.EntityFactory {
         physics.setFixtureDef(new FixtureDef().friction(1F));
         return entityBuilder(data)
                 .type(EntityType.TEMP_PLATFORM)
-                //.viewWithBBox(texture("ice/iceBlock.png"))
+                .viewWithBBox(texture("ice/hologramBlock.png"))
                 .bbox(new HitBox(BoundingShape.box(70,70)))
                 .collidable()
                 .with(physics)
@@ -226,7 +226,7 @@ public class EntityFactory implements com.almasb.fxgl.entity.EntityFactory {
     public Entity newCoin(SpawnData data) {
         return entityBuilder(data)
                 .type(EntityType.COIN)
-                .viewWithBBox(texture("coinGold.png"))
+                .viewWithBBox(texture("heart.png"))
                 .collidable()
                 .build();
     }

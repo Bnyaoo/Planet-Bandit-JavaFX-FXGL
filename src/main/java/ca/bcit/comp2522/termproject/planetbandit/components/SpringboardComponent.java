@@ -12,10 +12,10 @@ import javafx.util.Duration;
 import java.util.List;
 
 public class SpringboardComponent extends Component {
-    Image up = FXGL.image("springboardUp.png");
-    Image down = FXGL.image("springboardDown.png");
+    Image up = FXGL.image("propellerUP.png");
+    Image down = FXGL.image("propellerDOWN.png");
 
-    AnimationChannel ac = new AnimationChannel(List.of(up, down, up), Duration.seconds(0.3));
+    AnimationChannel ac = new AnimationChannel(List.of(down), Duration.seconds(3));
     AnimatedTexture animatedTexture = new AnimatedTexture(ac);
     @Override
     public void onAdded() {

@@ -20,6 +20,22 @@ import java.util.Random;
  * @version 2022
  */
 public class Space {
+    private static final int COIN_STARTING_X_COORDINATE = 70;
+    private static final int COIN_STARTING_Y_COORDINATE = 200;
+    private static final int COIN_FONT_SIZE = 30;
+    private static final int COINS_TO_COLLECT = 10;
+    private static final int COIN_SCALED_WIDTH = 70;
+    private static final int COIN_SCALED_HEIGHT = 80;
+    private static final int SPACESHIP_STARTING_X_COORDINATE = 270;
+    private static final int SPACESHIP_STARTING_Y_COORDINATE = 450;
+    private static final int SPACESHIP_SCALED_WIDTH = 60;
+    private static final int SPACESHIP_SCALED_HEIGHT = 100;
+    private static final int SPACESHIP_SPEED = 25;
+    private static final int GAME_OVER_TEXT_SIZE = 100;
+    private static final int GAME_WON_TEXT_SIZE = 50;
+
+
+
     /* background image file name */
     private static final String BACKGROUND_IMG_NAME = "space.jpg";
 
@@ -46,9 +62,7 @@ public class Space {
     public Space() {
         this.spaceship = new Spaceship();
         // Starting coordinates for coin
-        int coinXcoordinate = 70;
-        int coinYcoordinate = 200;
-        this.coin = new Coin(coinXcoordinate, coinYcoordinate);
+        this.coin = new Coin(COIN_STARTING_X_COORDINATE, COIN_STARTING_Y_COORDINATE);
         int coinsCollected = 0;
         final int textx = 1100;
         final int texty = 50;
@@ -70,7 +84,7 @@ public class Space {
         backgroundImageView.setFitWidth(APP_WIDTH);
 
         /* Coins collected Text*/
-        text1.setFont(Font.font("Courier", FontWeight.BOLD, FontPosture.REGULAR, 30));
+        text1.setFont(Font.font("Courier", FontWeight.BOLD, FontPosture.REGULAR, COIN_FONT_SIZE));
         text1.setFill(Color.YELLOW);
 
 
@@ -93,7 +107,6 @@ public class Space {
      * @version 2022
      */
     public class Spaceship {
-        private int health = 3;
         private int xCoordinate;
         private int yCoordinate;
         private boolean alive;
@@ -107,35 +120,17 @@ public class Space {
          */
         public Spaceship() {
             //starting coordinates of spaceship
-            this.xCoordinate = 270;
-            this.yCoordinate = 450;
+            this.xCoordinate = SPACESHIP_STARTING_X_COORDINATE;
+            this.yCoordinate = SPACESHIP_STARTING_Y_COORDINATE;
             this.alive = true;
             // assigns image characteristics of spaceship
             Image spaceshipImg = new Image(getImageName(), true);
             playerImageView = new ImageView(spaceshipImg);
-            playerImageView.setFitHeight(100);
-            playerImageView.setFitWidth(60);
+            playerImageView.setFitHeight(SPACESHIP_SCALED_HEIGHT);
+            playerImageView.setFitWidth(SPACESHIP_SCALED_WIDTH);
             playerImageView.setX(this.getxCoordinate());
             playerImageView.setY(this.getyCoordinate());
 
-        }
-
-        /**
-         * Returns the spaceship health.
-         *
-         * @return an int that represents the spaceships health
-         */
-        public int getHealth() {
-            return this.health;
-        }
-
-        /**
-         * Sets the spaceship health.
-         *
-         * @param health represents the spaceships new health
-         */
-        public void setHealth(final int health) {
-            this.health = health;
         }
 
         /**
@@ -270,10 +265,8 @@ public class Space {
          * @return a boolean value
          */
         public boolean checkIfInBounds() {
-            int spaceshipWidth = 60;
-            int spaceshipHeight = 100;
-            return this.getxCoordinate() > 0 && this.getxCoordinate() < Space.APP_WIDTH - spaceshipWidth
-                    && this.getyCoordinate() > 0 && this.getyCoordinate() < Space.APP_HEIGHT - spaceshipHeight;
+            return this.getxCoordinate() > 0 && this.getxCoordinate() < Space.APP_WIDTH - SPACESHIP_SCALED_WIDTH
+                    && this.getyCoordinate() > 0 && this.getyCoordinate() < Space.APP_HEIGHT - SPACESHIP_SCALED_HEIGHT;
         }
 
         /**
@@ -294,7 +287,7 @@ public class Space {
          */
         public void processKeyPress(final KeyEvent event, final Coin currentCoin) {
             /* Coins collected Text*/
-            if (checkIfInBounds() && isAlive() && coinsCollected < 10) {
+            if (checkIfInBounds() && isAlive() && coinsCollected < COINS_TO_COLLECT) {
                 if (collidesWithCoin(currentCoin)) {
                     coinsCollected++;
                     currentCoin.addCoins(this);
@@ -302,13 +295,13 @@ public class Space {
                     final int y = 50;
                     root.getChildren().remove(text1);
                     text1 = new Text(x, y, "Coins:" + coinsCollected);
-                    text1.setFont(Font.font("Courier", FontWeight.BOLD, FontPosture.REGULAR, 30));
+                    text1.setFont(Font.font("Courier", FontWeight.BOLD, FontPosture.REGULAR, COIN_FONT_SIZE));
                     text1.setFill(Color.YELLOW);
 
                     root.getChildren().add(text1);
 
                 }
-                int moveSpeed = 25;
+                int moveSpeed = SPACESHIP_SPEED;
                 switch (event.getCode()) {
                     case W -> {
                         this.setyCoordinate(this.getyCoordinate() - moveSpeed);
@@ -358,7 +351,7 @@ public class Space {
                 final int dreamY = 350;
                 text2 = new Text(dreamX, dreamY, "GAME OVER");
                 text2.setFill(Color.RED);
-                text2.setFont(Font.font("Courier", FontWeight.BOLD, FontPosture.REGULAR, 100));
+                text2.setFont(Font.font("Courier", FontWeight.BOLD, FontPosture.REGULAR, GAME_OVER_TEXT_SIZE));
             }
 
             if (gameWon) {
@@ -366,7 +359,7 @@ public class Space {
                 final int y = 350;
                 text2 = new Text(x, y, "You have arrived at the next planet!");
                 text2.setFill(Color.GREEN);
-                text2.setFont(Font.font("Courier", FontWeight.BOLD, FontPosture.REGULAR, 50));
+                text2.setFont(Font.font("Courier", FontWeight.BOLD, FontPosture.REGULAR, GAME_WON_TEXT_SIZE));
             }
 
             root.getChildren().add(text2);
@@ -403,8 +396,8 @@ public class Space {
             imageView = new ImageView(coinImg);
 
             // Sets the size of the coin on the screen
-            coinHeight = 80;
-            coinWidth = 70;
+            coinHeight = COIN_SCALED_HEIGHT;
+            coinWidth = COIN_SCALED_WIDTH;
             imageView.setFitHeight(coinHeight);
             imageView.setFitWidth(coinWidth);
 

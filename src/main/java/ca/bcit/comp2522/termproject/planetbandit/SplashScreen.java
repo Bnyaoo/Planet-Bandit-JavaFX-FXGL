@@ -22,6 +22,8 @@ import javafx.util.Duration;
  * @version 2022
  */
 public class SplashScreen {
+    private static final int APP_WIDTH = 1280;
+    private static final double TRANSITION_DURATION = 1.2;
     private Pane splashLayout;
     private ImageView splash;
 
@@ -35,7 +37,7 @@ public class SplashScreen {
     public SplashScreen(final Stage stage, final Image splashImage,
                         final InitCompletionHandler showGameMethod) {
         this.splash = new ImageView(splashImage);
-        this.splash.setFitWidth(1280);
+        this.splash.setFitWidth(APP_WIDTH);
         this.splashLayout = new StackPane();
         this.splashLayout.getChildren().addAll(splash);
         this.splashLayout.setBackground(Background.fill(Color.BLACK));
@@ -73,7 +75,7 @@ public class SplashScreen {
         task.stateProperty().addListener((observableValue, oldState, newState) -> {
             if (newState == Worker.State.SUCCEEDED) {
                 initStage.toFront();
-                FadeTransition fadeSplash = new FadeTransition(Duration.seconds(1.2), splashLayout);
+                FadeTransition fadeSplash = new FadeTransition(Duration.seconds(TRANSITION_DURATION), splashLayout);
                 fadeSplash.setFromValue(1.0);
                 fadeSplash.setToValue(0.0);
                 fadeSplash.setOnFinished(actionEvent -> initStage.hide());

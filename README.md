@@ -74,14 +74,6 @@ This is written in markdown. Read about markdown here: [markdowncheatsheet](http
 - ![image info](./resources/assets/textures/bosses/Jin.png)
 
 ## Any important comments you'd like to make about your work:
-### Sprint 1 Comments:
-- We were unable to get the asteroids in the space invader mini-game working properly, but we did complete many other
-things that we did not plan to finish in sprint 1 to make up for it.
-- We need to match up our frame sizes to make the space mini-game "part of" the actual game
-- We still have a lot of commenting left to do because we spent very long trying to get used to javafx and trying to 
-get things working
-- We currently have 2 different playable classes because we didn't get the chance to merge them into one yet
-
 
 ## References:
 Code:
@@ -90,6 +82,7 @@ Code:
 - https://github.com/chris-thompson/2522-202210-JavaFX-Examples.git
 - https://github.com/Siderim/video-game-menu/blob/master/Main.java
 - https://www.javaguides.net/2019/07/login-form-using-javafx-with-mysql-database.html
+- https://github.com/Siderim/video-game-menu/blob/master/Main.java
 
 Artwork, Music, and Other Assets:
 - https://opengameart.org/content/animated-warrior
@@ -101,3 +94,18 @@ Artwork, Music, and Other Assets:
 - https://www.youtube.com/watch?v=YmbdqcbWgnI
 - https://www.youtube.com/watch?v=AgzE2TeXCl0
 - https://www.youtube.com/watch?v=QtCbgadN3Rc
+
+
+### Sprint 1 Comments:
+- We were unable to get the asteroids in the space invader mini-game working properly, but we did complete many other
+  things that we did not plan to finish in sprint 1 to make up for it.
+- We need to match up our frame sizes to make the space mini-game "part of" the actual game
+- We still have a lot of commenting left to do because we spent very long trying to get used to javafx and trying to
+  get things working
+- We currently have 2 different playable classes because we didn't get the chance to merge them into one yet
+
+### Sprint 2 Comments:
+- We got almost our entire gameplay complete we just need to link the different components of the game to each other
+and incorporate a save method
+- We need to add in our riddle system
+- We decided to change how the space mini-game works because the actual game itself is hard enough

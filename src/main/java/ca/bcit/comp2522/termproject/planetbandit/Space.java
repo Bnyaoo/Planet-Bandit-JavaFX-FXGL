@@ -362,7 +362,7 @@ public class Space {
             }
 
             if (gameWon) {
-                final int x = 75;
+                final int x = 95;
                 final int y = 350;
                 text2 = new Text(x, y, "You have arrived at the next planet!");
                 text2.setFill(Color.GREEN);

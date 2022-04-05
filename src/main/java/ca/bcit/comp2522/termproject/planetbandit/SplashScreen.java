@@ -80,7 +80,11 @@ public class SplashScreen {
                 fadeSplash.setToValue(0.0);
                 fadeSplash.setOnFinished(actionEvent -> initStage.hide());
                 fadeSplash.play();
-                initCompletionHandler.complete();
+                try {
+                    initCompletionHandler.complete();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 fadeSplash.setOnFinished(e -> {
                     splashLayout = null;
                     splash = null;
@@ -96,8 +100,9 @@ public class SplashScreen {
     public interface InitCompletionHandler {
         /**
          * Completes the splash screen and displays the next stage.
+         * @throws Exception if the user's login credentials is in invalid
          */
-        void complete();
+        void complete() throws Exception;
     }
 
 }

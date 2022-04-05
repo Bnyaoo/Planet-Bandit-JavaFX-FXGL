@@ -23,10 +23,12 @@ public class DisplaySplashScreen {
 
     /**
      * Displays the actual game screen once we are done displaying the splash screen.
+     * @throws Exception if the user's login credentials is in invalid
      */
-    private void showGame() {
-        MainMenu mainMenu = new MainMenu();
+    private void showGame() throws Exception {
+//        MainMenu mainMenu = new MainMenu();
+        LoginApp loginApp = new LoginApp();
         GamePlay gamePlay = new GamePlay();
-        mainMenu.start(gamePlay.getStage());
+        loginApp.start(gamePlay.getStage());
     }
 }

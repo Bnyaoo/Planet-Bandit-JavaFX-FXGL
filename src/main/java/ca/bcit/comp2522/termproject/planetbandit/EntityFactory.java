@@ -26,15 +26,18 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 import javafx.util.Duration;
-
 import static com.almasb.fxgl.dsl.FXGL.*;
 
+/**
+ * Represents an entity factory object.
+ *
+ * @author Prab and Benny
+ * @version 2022
+ */
 public class EntityFactory implements com.almasb.fxgl.entity.EntityFactory {
-
     @Spawns("background")
     public Entity newBackground(SpawnData data) {
-
-        Image bgImageName = new Image(getAssetLoader().getStream("/assets/textures/"+"background/" + data.get("bgImageName")));
+        Image bgImageName = new Image(getAssetLoader().getStream("/assets/textures/" + "background/" + data.get("bgImageName")));
         ScrollingBackgroundView bgView = new ScrollingBackgroundView(bgImageName, getAppWidth(), getAppHeight());
         return entityBuilder(data)
                 .view(bgView)
@@ -200,26 +203,25 @@ public class EntityFactory implements com.almasb.fxgl.entity.EntityFactory {
         return entityBuilder(data)
                 .type(EntityType.TEMP_PLATFORM)
                 .viewWithBBox(texture("ice/hologramBlock.png"))
-                .bbox(new HitBox(BoundingShape.box(70,70)))
+                .bbox(new HitBox(BoundingShape.box(70, 70)))
                 .collidable()
                 .with(physics)
                 .with(new TempPlatformComponent())
                 .build();
     }
 
-    AnimationChannel acIceDisappear = new AnimationChannel(FXGL.image("ice/ice_disappear.png",1273/2.0,179/2.0), Duration.seconds(0.3), 7);
+    AnimationChannel acIceDisappear = new AnimationChannel(FXGL.image("ice/ice_disappear.png", 1273 / 2.0, 179 / 2.0), Duration.seconds(0.3), 7);
 
     @Spawns("iceDisappear")
     public Entity newIceDisappear(SpawnData data) {
         AnimatedTexture animatedTexture = new AnimatedTexture(acIceDisappear);
         animatedTexture.loop();
         return entityBuilder(data)
-                .at(data.getX()-10, data.getY()-30)
+                .at(data.getX() - 10, data.getY() - 30)
                 .view(animatedTexture)
                 .with(new ExpireCleanComponent(Duration.seconds(0.3)))
                 .build();
     }
-
 
 
     @Spawns("coin")
@@ -232,6 +234,7 @@ public class EntityFactory implements com.almasb.fxgl.entity.EntityFactory {
     }
 
     AnimationChannel acIceWater = new AnimationChannel(FXGL.image("ice/iceWater.png"), Duration.seconds(1), 2);
+
     @Spawns("iceWater")
     public Entity newIceWater(SpawnData data) {
         AnimatedTexture animatedTexture = new AnimatedTexture(acIceWater);
@@ -243,7 +246,8 @@ public class EntityFactory implements com.almasb.fxgl.entity.EntityFactory {
     }
 
 
-    AnimationChannel acCollideCoin = new AnimationChannel(FXGL.image("ice/collideCoin.png"),7,128,128,Duration.seconds(0.45),0,13);
+    AnimationChannel acCollideCoin = new AnimationChannel(FXGL.image("ice/collideCoin.png"), 7, 128, 128, Duration.seconds(0.45), 0, 13);
+
     @Spawns("collideCoin")
     public Entity newCollideCoin(SpawnData data) {
         AnimatedTexture animatedTexture = new AnimatedTexture(acCollideCoin);
@@ -270,7 +274,7 @@ public class EntityFactory implements com.almasb.fxgl.entity.EntityFactory {
                 .type(EntityType.SPRINGBOARD)
                 .with(new PhysicsComponent())
                 .collidable()
-                .bbox(new HitBox(new Point2D(1,20),BoundingShape.box(68,6)))
+                .bbox(new HitBox(new Point2D(1, 20), BoundingShape.box(68, 6)))
                 .with(new SpringboardComponent())
                 .build();
     }

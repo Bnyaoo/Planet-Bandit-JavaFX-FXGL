@@ -44,7 +44,45 @@ import static com.almasb.fxgl.dsl.FXGL.texture;
  * @version 2022
  */
 public class EntityFactory implements com.almasb.fxgl.entity.EntityFactory {
+    private static final int FIVE = 5;
     private static final int SIX = 6;
+    private static final int SEVEN = 7;
+    private static final int EIGHT = 8;
+    private static final int TEN = 10;
+    private static final int TWELVE = 12;
+    private static final int THIRTEEN = 13;
+    private static final int SIXTEEN = 16;
+    private static final int SEVENTEEN = 17;
+    private static final int EIGHTEEN = 18;
+    private static final int TWENTY = 20;
+    private static final int TWENTY_FOUR = 24;
+    private static final int TWENTY_FIVE = 25;
+    private static final int THIRTY_EIGHT = 38;
+    private static final int FIFTY = 50;
+    private static final int SIXTY_EIGHT = 68;
+    private static final int SEVENTY = 70;
+    private static final int HUNDRED = 100;
+    private static final int HUNDRED_TWENTY_EIGHT = 128;
+    private static final int THOUSAND_TWO_HUNDRED_SEVENTY_THREE = 1273;
+    private static final double HUNDRED_SEVENTY_NINE = 179;
+    private static final double THIRTY = 30;
+    private static final double POINT_SEVEN_FIVE = 0.75;
+    private static final double POINT_THREE = 0.3;
+    private static final double POINT_FORTY_FIVE = 0.45;
+    private static final float POINT_FIVE = 0.5f;
+
+    private final AnimationChannel acIceDisappear = new AnimationChannel(FXGL.image("ice/ice_disappear.png",
+            THOUSAND_TWO_HUNDRED_SEVENTY_THREE / 2.0, HUNDRED_SEVENTY_NINE / 2.0),
+            Duration.seconds(POINT_THREE), SEVEN);
+
+    private final AnimationChannel acIceWater = new AnimationChannel(FXGL.image("ice/iceWater.png"),
+            Duration.seconds(1), 2);
+
+    private final AnimationChannel acCollideCoin = new AnimationChannel(FXGL.image("ice/collideCoin.png"),
+            SEVEN, HUNDRED_TWENTY_EIGHT, HUNDRED_TWENTY_EIGHT, Duration.seconds(POINT_FORTY_FIVE),
+            0, THIRTEEN);
+
+
     /**
      * Generates a new background.
      *
@@ -99,6 +137,7 @@ public class EntityFactory implements com.almasb.fxgl.entity.EntityFactory {
 
     /**
      * Generates an exit trigger.
+     *
      * @param data a SpawnData object that represents the data for the new exit trigger
      * @return an Entity object
      */
@@ -113,6 +152,7 @@ public class EntityFactory implements com.almasb.fxgl.entity.EntityFactory {
 
     /**
      * Generates a door top.
+     *
      * @param data a SpawnData object that represents the data for the new door top
      * @return an Entity object
      */
@@ -126,6 +166,7 @@ public class EntityFactory implements com.almasb.fxgl.entity.EntityFactory {
 
     /**
      * Generates a door bot.
+     *
      * @param data a SpawnData object that represents the data for the new door bot
      * @return an Entity object
      */
@@ -141,6 +182,7 @@ public class EntityFactory implements com.almasb.fxgl.entity.EntityFactory {
 
     /**
      * Generates a new key prompt.
+     *
      * @param data a SpawnData object that represents the data for the new key prompt
      * @return an Entity object
      */
@@ -155,6 +197,7 @@ public class EntityFactory implements com.almasb.fxgl.entity.EntityFactory {
 
     /**
      * Generates an exit sign.
+     *
      * @param data a SpawnData object that represents the data for the new exit sign
      * @return an Entity object
      */
@@ -169,6 +212,7 @@ public class EntityFactory implements com.almasb.fxgl.entity.EntityFactory {
 
     /**
      * Generates a key code.
+     *
      * @param data a SpawnData object that represents the data for the new key code
      * @return an Entity object
      */
@@ -178,20 +222,21 @@ public class EntityFactory implements com.almasb.fxgl.entity.EntityFactory {
         KeyCode keyCode = KeyCode.getKeyCode(key);
         LiftComponent lift = new LiftComponent();
         lift.setGoingUp(true);
-        lift.yAxisSpeedDuration(6, Duration.millis(0.75));
-        KeyView keyView = new KeyView(keyCode, Color.YELLOW, 24);
+        lift.yAxisSpeedDuration(SIX, Duration.millis(POINT_SEVEN_FIVE));
+        KeyView keyView = new KeyView(keyCode, Color.YELLOW, TWENTY_FOUR);
         keyView.setCache(true);
         keyView.setCacheHint(CacheHint.SCALE);
 
         return entityBuilder(data)
                 .view(keyView)
                 .with(lift)
-                .zIndex(100)
+                .zIndex(HUNDRED)
                 .build();
     }
 
     /**
      * Generates a new player.
+     *
      * @param data a SpawnData object that represents the data for the new player
      * @return an Entity object
      */
@@ -199,13 +244,14 @@ public class EntityFactory implements com.almasb.fxgl.entity.EntityFactory {
     public Entity newPlayer(final SpawnData data) {
         PhysicsComponent physics = new PhysicsComponent();
         physics.setBodyType(BodyType.DYNAMIC);
-        physics.addGroundSensor(new HitBox("GROUND_SENSOR", new Point2D(16, 38), BoundingShape.box(6, 8)));
-        physics.setFixtureDef(new FixtureDef().friction(0.5f));
+        physics.addGroundSensor(new HitBox("GROUND_SENSOR", new Point2D(SIXTEEN, THIRTY_EIGHT),
+                BoundingShape.box(SIX, EIGHT)));
+        physics.setFixtureDef(new FixtureDef().friction(POINT_FIVE));
 
         return entityBuilder(data)
                 .type(EntityType.PLAYER)
-                .bbox(new HitBox(new Point2D(5, 5), BoundingShape.circle(12)))
-                .bbox(new HitBox(new Point2D(10, 25), BoundingShape.box(10, 17)))
+                .bbox(new HitBox(new Point2D(FIVE, FIVE), BoundingShape.circle(TWELVE)))
+                .bbox(new HitBox(new Point2D(TEN, TWENTY_FIVE), BoundingShape.box(TEN, SEVENTEEN)))
                 .with(new CollidableComponent(true))
                 .with(new IrremovableComponent())
                 .with(physics)
@@ -215,19 +261,20 @@ public class EntityFactory implements com.almasb.fxgl.entity.EntityFactory {
 
     /**
      * Generates a button.
+     *
      * @param data a SpawnData object that represents the data for the new button
      * @return an Entity object
      */
     @Spawns("button")
     public Entity newButton(final SpawnData data) {
         Entity keyEntity = FXGL.getGameWorld().create("keyCode",
-                new SpawnData(data.getX(), data.getY() - 50).put("key", "E")
+                new SpawnData(data.getX(), data.getY() - FIFTY).put("key", "E")
         );
         keyEntity.setOpacity(0);
 
         return entityBuilder(data)
                 .type(EntityType.BUTTON)
-                .viewWithBBox(texture("button.png", 20, 18))
+                .viewWithBBox(texture("button.png", TWENTY, EIGHTEEN))
                 .with(new CollidableComponent(true))
                 .with("keyEntity", keyEntity)
                 .build();
@@ -235,6 +282,7 @@ public class EntityFactory implements com.almasb.fxgl.entity.EntityFactory {
 
     /**
      * Generates spike objects.
+     *
      * @param data a SpawnData object that represents the data for the new spike
      * @return an Entity object
      */
@@ -250,6 +298,7 @@ public class EntityFactory implements com.almasb.fxgl.entity.EntityFactory {
 
     /**
      * Generates a new platform to give the illusion of a side scrolling game.
+     *
      * @param data a SpawnData object that represents the data for the new platform
      * @return an Entity object
      */
@@ -270,6 +319,7 @@ public class EntityFactory implements com.almasb.fxgl.entity.EntityFactory {
 
     /**
      * Generates a temporary platform to give the illusion of a side scrolling game.
+     *
      * @param data a SpawnData object that represents the data for the new platform
      * @return an Entity object
      */
@@ -281,7 +331,7 @@ public class EntityFactory implements com.almasb.fxgl.entity.EntityFactory {
         return entityBuilder(data)
                 .type(EntityType.TEMP_PLATFORM)
                 .viewWithBBox(texture("ice/hologramBlock.png"))
-                .bbox(new HitBox(BoundingShape.box(70, 70)))
+                .bbox(new HitBox(BoundingShape.box(SEVENTY, SEVENTY)))
                 .collidable()
                 .with(physics)
                 .with(new TempPlatformComponent())
@@ -289,12 +339,8 @@ public class EntityFactory implements com.almasb.fxgl.entity.EntityFactory {
     }
 
     /**
-     * Creates the animation for when the ice is about to disappear.
-     */
-    AnimationChannel acIceDisappear = new AnimationChannel(FXGL.image("ice/ice_disappear.png", 1273 / 2.0, 179 / 2.0), Duration.seconds(0.3), 7);
-
-    /**
      * Allows the platform to disappear.
+     *
      * @param data a SpawnData object that represents the data for the platform
      * @return an Entity object
      */
@@ -303,15 +349,16 @@ public class EntityFactory implements com.almasb.fxgl.entity.EntityFactory {
         AnimatedTexture animatedTexture = new AnimatedTexture(acIceDisappear);
         animatedTexture.loop();
         return entityBuilder(data)
-                .at(data.getX() - 10, data.getY() - 30)
+                .at(data.getX() - TEN, data.getY() - THIRTY)
                 .view(animatedTexture)
-                .with(new ExpireCleanComponent(Duration.seconds(0.3)))
+                .with(new ExpireCleanComponent(Duration.seconds(POINT_THREE)))
                 .build();
     }
 
 
     /**
      * Generates a new coin.
+     *
      * @param data a SpawnData object that represents the data for the new coin
      * @return an Entity object
      */
@@ -324,10 +371,9 @@ public class EntityFactory implements com.almasb.fxgl.entity.EntityFactory {
                 .build();
     }
 
-    AnimationChannel acIceWater = new AnimationChannel(FXGL.image("ice/iceWater.png"), Duration.seconds(1), 2);
-
     /**
      * Generates a water platform on the map.
+     *
      * @param data a SpawnData object that represents the data for the new water platform
      * @return an Entity object
      */
@@ -342,27 +388,24 @@ public class EntityFactory implements com.almasb.fxgl.entity.EntityFactory {
     }
 
     /**
-     * Creates an animation for when the player collides with the coin.
-     */
-    AnimationChannel acCollideCoin = new AnimationChannel(FXGL.image("ice/collideCoin.png"), 7, 128, 128, Duration.seconds(0.45), 0, 13);
-
-    /**
      * Generates an entity if player collides with coin.
+     *
      * @param data a SpawnData object that represents the data for the collision
      * @return an Entity object
      */
     @Spawns("collideCoin")
-    public Entity newCollideCoin(SpawnData data) {
+    public Entity newCollideCoin(final SpawnData data) {
         AnimatedTexture animatedTexture = new AnimatedTexture(acCollideCoin);
         animatedTexture.loop();
         return entityBuilder(data)
                 .view(animatedTexture)
-                .with(new ExpireCleanComponent(Duration.seconds(0.45)))
+                .with(new ExpireCleanComponent(Duration.seconds(POINT_FORTY_FIVE)))
                 .build();
     }
 
     /**
      * Generates a laser object.
+     *
      * @param data a SpawnData object that represents the data for the laser
      * @return an Entity object
      */
@@ -372,12 +415,13 @@ public class EntityFactory implements com.almasb.fxgl.entity.EntityFactory {
                 .type(EntityType.LASER)
                 .collidable()
                 .with(new LaserComponent())
-                .zIndex(100)
+                .zIndex(HUNDRED)
                 .build();
     }
 
     /**
      * Generates a springboard object.
+     *
      * @param data a SpawnData object that represents the data for the springboard
      * @return an Entity object
      */
@@ -387,7 +431,7 @@ public class EntityFactory implements com.almasb.fxgl.entity.EntityFactory {
                 .type(EntityType.SPRINGBOARD)
                 .with(new PhysicsComponent())
                 .collidable()
-                .bbox(new HitBox(new Point2D(1, 20), BoundingShape.box(68, 6)))
+                .bbox(new HitBox(new Point2D(1, TWENTY), BoundingShape.box(SIXTY_EIGHT, SIX)))
                 .with(new SpringboardComponent())
                 .build();
     }

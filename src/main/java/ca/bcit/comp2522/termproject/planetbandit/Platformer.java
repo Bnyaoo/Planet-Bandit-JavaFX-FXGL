@@ -4,6 +4,7 @@ import com.almasb.fxgl.animation.Interpolators;
 import com.almasb.fxgl.app.ApplicationMode;
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
+import com.almasb.fxgl.app.scene.GameScene;
 import com.almasb.fxgl.app.scene.GameView;
 import com.almasb.fxgl.app.scene.SceneFactory;
 import com.almasb.fxgl.app.scene.Viewport;
@@ -13,6 +14,7 @@ import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.SpawnData;
 import com.almasb.fxgl.entity.components.CollidableComponent;
 import com.almasb.fxgl.entity.level.Level;
+import com.almasb.fxgl.input.Input;
 import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.input.view.KeyView;
 import com.almasb.fxgl.input.virtual.VirtualButton;
@@ -22,10 +24,19 @@ import ca.bcit.comp2522.termproject.planetbandit.collisions.PlayerButtonHandler;
 import ca.bcit.comp2522.termproject.planetbandit.components.PlayerComponent;
 import ca.bcit.comp2522.termproject.planetbandit.ui.LevelEndScene;
 import ca.bcit.comp2522.termproject.planetbandit.ui.LoadingScene;
+import javafx.geometry.HPos;
 import javafx.geometry.Point2D;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import javafx.util.Duration;
 
 import java.util.Map;
@@ -33,23 +44,39 @@ import java.util.Map;
 import static com.almasb.fxgl.dsl.FXGLForKtKt.getGameScene;
 import static com.almasb.fxgl.dsl.FXGLForKtKt.showMessage;
 
+
+/**
+ * Represents the gameplay platform.
+ *
+ * @author Prab and Benny
+ * @version 2022
+ */
 public class Platformer extends GameApplication {
 
     private static final int MAX_LEVEL = 3;
     private static final int STARTING_LEVEL = 0;
+    private static final int SCREEN_WIDTH = 1280;
+    private static final int SCREEN_HEIGHT = 720;
 
     private final LazyValue<LevelEndScene> levelEndSceneValue =
             new LazyValue<>(LevelEndScene::new);
 
-    public Entity player;
-    private Riddles riddles = new Riddles();
+    private Entity player;
+    private final Riddles riddles = new Riddles();
+//    Space space = new Space();
+//    GamePlay gamePlay = new GamePlay();
 
+    /**
+     * Initializes game settings.
+     * @param settings a GameSettings object
+     */
     @Override
-    protected void initSettings(GameSettings settings) {
+    protected void initSettings(final GameSettings settings) {
 
-        settings.setWidth(1280);
-        settings.setHeight(720);
+        settings.setWidth(SCREEN_WIDTH);
+        settings.setHeight(SCREEN_HEIGHT);
         settings.setSceneFactory(new SceneFactory() {
+
             @Override
             public com.almasb.fxgl.app.scene.LoadingScene newLoadingScene() {
                 return new LoadingScene();
@@ -122,12 +149,13 @@ public class Platformer extends GameApplication {
     }
 
     @Override
-    protected void initGameVars(Map<String, Object> vars) {
+    protected void initGameVars(final Map<String, Object> vars) {
         vars.put("level", STARTING_LEVEL);
         vars.put("levelTime", 0.0);
         vars.put("score", 0);
         vars.put("lives", 5);
     }
+
 
     @Override
     protected void onPreInit() {
@@ -167,13 +195,30 @@ public class Platformer extends GameApplication {
             System.out.println("Level Completed");
             getGameScene().getViewport().fade(() -> {
                 FXGL.showMessage(riddles.getRiddle(), () -> {
-                    FXGL.showConfirm("Move on to the next planet?", result -> {
-                        if (result) {
-                            nextLevel();
+                    FXGL.getDialogService().showInputBox("Please enter your answer: ", answer -> {
+                        System.out.println("You typed: "+ answer);
+                        if (answer.equalsIgnoreCase(riddles.getAnswer())) {
+                            FXGL.showConfirm("Correct!\nMove on to the next planet?", result -> {
+                                if (result) {
+                                    nextLevel();
+                                } else {
+                                    FXGL.getGameController().exit();
+                                }
+                            });
                         } else {
-                            FXGL.getGameController().exit();
+                            FXGL.showMessage("I'm sorry that was incorrect, the fugitive has escaped!\nThe correct answer was, '" + riddles.getAnswer() + "'.");
+                            playerDead();
                         }
                     });
+
+
+//                    FXGL.showConfirm("Move on to the next planet?", result -> {
+//                        if (result) {
+//                            nextLevel();
+//                        } else {
+//                            FXGL.getGameController().exit();
+//                        }
+//                    });
                 });
             });
         });

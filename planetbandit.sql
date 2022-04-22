@@ -22,15 +22,13 @@ USE `planetbandit`;
 -- Table structure for table `users`
 --
 
-DROP TABLE IF EXISTS `registration`;
+DROP TABLE IF EXISTS `users`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `registration` (
-  `id` BIGINT NOT NULL,
-  `full_name` varchar(250) NOT NULL,
-  `email_id` varchar(250) NOT NULL,
-  `password` varchar(250),
-  PRIMARY KEY (`id`)
+CREATE TABLE `users` (
+  `user_id` varchar(45) NOT NULL,
+  `password` varchar(45),
+  PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -40,7 +38,7 @@ CREATE TABLE `registration` (
 
 LOCK TABLES `registration` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `registration` VALUES (1,'Chris Thompson','comp2522','I was born in 1973');
+INSERT INTO `registration` VALUES ('comp2522', 'I was born in 1973');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

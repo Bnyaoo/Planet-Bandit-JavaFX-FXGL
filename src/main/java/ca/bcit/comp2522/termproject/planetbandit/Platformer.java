@@ -4,6 +4,7 @@ import com.almasb.fxgl.animation.Interpolators;
 import com.almasb.fxgl.app.ApplicationMode;
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
+import com.almasb.fxgl.app.scene.FXGLMenu;
 import com.almasb.fxgl.app.scene.GameView;
 import com.almasb.fxgl.app.scene.SceneFactory;
 import com.almasb.fxgl.app.scene.Viewport;
@@ -128,6 +129,11 @@ public class Platformer extends GameApplication {
             @Override
             public com.almasb.fxgl.app.scene.LoadingScene newLoadingScene() {
                 return new LoadingScene();
+            }
+
+            @Override
+            public FXGLMenu newMainMenu() {
+                return new Login();
             }
         });
 

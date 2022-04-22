@@ -170,6 +170,7 @@ public class MainMenu extends Application {
                 bg.setFill(Color.YELLOW);
 
                 String buttonID = this.getId();
+
                 processButtonClick(buttonID);
 
             });
@@ -187,8 +188,10 @@ public class MainMenu extends Application {
         GamePlay gamePlay = new GamePlay();
         if (id.equals("1")) {
             Space space = new Space();
+            Platformer platformer = new Platformer();
             stage.close();
-            space.start(gamePlay.getStage());
+            String[] arg = {};
+            platformer.main(arg);
         }
 
         if (id.equals("2")) {

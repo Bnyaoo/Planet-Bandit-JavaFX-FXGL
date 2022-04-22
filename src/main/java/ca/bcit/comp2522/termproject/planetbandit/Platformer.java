@@ -2,6 +2,7 @@ package ca.bcit.comp2522.termproject.planetbandit;
 
 import com.almasb.fxgl.animation.Interpolators;
 import com.almasb.fxgl.app.ApplicationMode;
+import com.almasb.fxgl.app.CursorInfo;
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
 import com.almasb.fxgl.app.scene.FXGLMenu;
@@ -117,7 +118,7 @@ public class Platformer extends GameApplication {
      */
     @Override
     protected void initSettings(final GameSettings settings) {
-
+        settings.setTitle("Planet Bandit");
         settings.setMainMenuEnabled(true);
         settings.setGameMenuEnabled(true);
 
@@ -264,14 +265,13 @@ public class Platformer extends GameApplication {
                     FXGL.showMessage(riddles.getRiddle(), () ->
                             FXGL.getDialogService().showInputBox("Please enter your answer: ",
                                     answer -> {
-                System.out.println("You typed: " + answer);
-                if (answer.equalsIgnoreCase(riddles.getAnswer())) {
-                    FXGL.showConfirm("Correct!\nMove on to the next planet?", result -> {
-                        if (result) {
-                            nextLevel();
-                        } else {
-                            FXGL.getGameController().exit();
-                        }
+                                if (answer.equalsIgnoreCase(riddles.getAnswer())) {
+                                    FXGL.showConfirm("Correct!\nMove on to the next planet?", result -> {
+                                        if (result) {
+                                            nextLevel();
+                                        } else {
+                                            FXGL.getGameController().exit();
+                                        }
                     });
                 } else {
                     FXGL.showMessage("I'm sorry that was incorrect, the fugitive has escaped!"

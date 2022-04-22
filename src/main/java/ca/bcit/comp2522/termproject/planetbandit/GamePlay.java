@@ -35,5 +35,7 @@ public class GamePlay extends Application {
      */
     public static void main(String[] args) {
         launch(args);
+        Platformer platformer = new Platformer();
+        platformer.main(args);
     }
 }

@@ -9,15 +9,15 @@ import java.sql.SQLException;
 /**
  * Creates the connection between a MySql database and our game.
  *
- * @author Prab and Benny
+ * @author Benny and Prab
  * @version 2022
  */
 public class JdbcDao {
     // Replace below database url, username and password with your actual database credentials
     private static final String DATABASE_URL = "jdbc:mysql://localhost:3306/planetbandit?useSSL=false"
             + "?allowPublicKeyRetrieval=true&useSSL=true";
-    private static final String DATABASE_USERNAME = "root";
-    private static final String DATABASE_PASSWORD = "root";
+    private static final String DATABASE_USERNAME = "comp2522";
+    private static final String DATABASE_PASSWORD = "I was born in 1973";
     private static final String SELECT_QUERY = "SELECT * FROM registration WHERE email_id = ? and password = ?";
 
     /**

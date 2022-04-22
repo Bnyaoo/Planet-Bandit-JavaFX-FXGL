@@ -64,7 +64,8 @@ public class LoginController {
      * @param headerText a string that represents the header of the info box
      * @param title a string that represents the title of the info box
      */
-    public static void infoBox(final String infoMessage, final String headerText, final String title) {
+    public static void infoBox(final String infoMessage,
+                               final String headerText, final String title) {
         Alert alert = new Alert(AlertType.CONFIRMATION);
         alert.setContentText(infoMessage);
         alert.setTitle(title);

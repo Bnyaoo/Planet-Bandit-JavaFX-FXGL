@@ -40,7 +40,7 @@ import static com.almasb.fxgl.dsl.FXGL.texture;
 /**
  * Represents an entity factory object.
  *
- * @author Prab and Benny
+ * @author Benny and Prab
  * @version 2022
  */
 public class EntityFactory implements com.almasb.fxgl.entity.EntityFactory {

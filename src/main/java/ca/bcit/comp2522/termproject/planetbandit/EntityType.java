@@ -3,7 +3,7 @@ package ca.bcit.comp2522.termproject.planetbandit;
 /**
  * Represents the entity types.
  *
- * @author Prab and Benny
+ * @author Benny and Prab
  * @version 2022
  */
 public enum EntityType {

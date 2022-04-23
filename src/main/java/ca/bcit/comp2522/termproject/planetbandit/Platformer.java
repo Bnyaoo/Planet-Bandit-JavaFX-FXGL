@@ -2,7 +2,6 @@ package ca.bcit.comp2522.termproject.planetbandit;
 
 import com.almasb.fxgl.animation.Interpolators;
 import com.almasb.fxgl.app.ApplicationMode;
-import com.almasb.fxgl.app.CursorInfo;
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
 import com.almasb.fxgl.app.scene.FXGLMenu;
@@ -263,7 +262,9 @@ public class Platformer extends GameApplication {
             System.out.println("Level Completed");
             getGameScene().getViewport().fade(() ->
                     FXGL.showMessage(riddles.getRiddle(), () ->
-                            FXGL.getDialogService().showInputBox("Please enter your answer: ",
+                            FXGL.getDialogService().showInputBox("Enter the full article in your answer. "
+                                            + "Here's an example.\nQ: What must be broken before you can use it?\n"
+                                            + "A: An egg\n\nPlease enter your answer: ",
                                     answer -> {
                                 if (answer.equalsIgnoreCase(riddles.getAnswer())) {
                                     FXGL.showConfirm("Correct!\nMove on to the next planet?", result -> {
@@ -272,13 +273,13 @@ public class Platformer extends GameApplication {
                                         } else {
                                             FXGL.getGameController().exit();
                                         }
-                    });
-                } else {
-                    FXGL.showMessage("I'm sorry that was incorrect, the fugitive has escaped!"
-                            + "\nThe correct answer was, '" + riddles.getAnswer() + "'.");
-                    playerDead();
-                }
-            })));
+                                });
+                                } else {
+                                    FXGL.showMessage("I'm sorry that was incorrect, the fugitive has escaped!"
+                                    + "\nThe correct answer was, '" + riddles.getAnswer() + "'.");
+                                    playerDead();
+                                }
+                    })));
         });
 
         FXGL.onCollisionBegin(EntityType.PLAYER, EntityType.KEY_PROMPT, (player, keyPrompt) -> {

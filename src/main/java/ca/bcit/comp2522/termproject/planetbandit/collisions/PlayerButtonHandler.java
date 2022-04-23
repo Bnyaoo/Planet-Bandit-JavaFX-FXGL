@@ -5,7 +5,9 @@ import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.physics.CollisionHandler;
 import ca.bcit.comp2522.termproject.planetbandit.EntityType;
 
-
+/**
+ *
+ */
 public class PlayerButtonHandler extends CollisionHandler {
     /**
      * The order of types determines the order of entities in callbacks.

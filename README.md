@@ -109,3 +109,10 @@ Artwork, Music, and Other Assets:
 and incorporate a save method
 - We need to add in our riddle system
 - We decided to change how the space mini-game works because the actual game itself is hard enough
+
+## Sprint 5 Comments:
+- In this sprint we were trying to combine all the game aspects, but we've realized it does not seem possible to 
+combine Java Fx and FXGL, so we had to redo our sql login
+- Since we can't combine these different classes a lot of our work from the previous sprints were not used, but we left
+it in there to show the total amount of work we have completed.
+- Please run the Platformer class not the Gameplay class

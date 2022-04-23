@@ -188,10 +188,8 @@ public class MainMenu extends Application {
         GamePlay gamePlay = new GamePlay();
         if (id.equals("1")) {
             Space space = new Space();
-            Platformer platformer = new Platformer();
             stage.close();
-            String[] arg = {};
-            platformer.main(arg);
+            space.start(gamePlay.getStage());
         }
 
         if (id.equals("2")) {

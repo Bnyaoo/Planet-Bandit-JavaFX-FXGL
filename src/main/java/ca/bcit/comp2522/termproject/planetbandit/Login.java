@@ -12,12 +12,16 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.*;
+import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Properties;
 
 /**
@@ -27,14 +31,18 @@ import java.util.Properties;
  * @version 2022
  */
 public final class Login extends FXGLMenu {
+    private static final int SIZE = 150;
     private static final int H_GAP = 10;
     private static final int V_GAP = 10;
     private static final int FONT_SIZE = 12;
     private static final int GRID_FOUR = 4;
+    private static final double DURATION = 0.66;
 
-    private Animation<?> animation;
-    private static final int SIZE = 150;
+    private final Animation<?> animation;
 
+    /**
+     * Constructs a login screen.
+     */
     public Login() {
         super(MenuType.MAIN_MENU);
 
@@ -83,7 +91,7 @@ public final class Login extends FXGLMenu {
         getContentRoot().setScaleY(0);
 
         animation = FXGL.animationBuilder()
-                .duration(Duration.seconds(0.66))
+                .duration(Duration.seconds(DURATION))
                 .interpolator(Interpolators.EXPONENTIAL.EASE_OUT())
                 .scale(getContentRoot())
                 .from(new Point2D(0, 0))

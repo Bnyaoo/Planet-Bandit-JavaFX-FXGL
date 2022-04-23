@@ -1,29 +1,31 @@
 package ca.bcit.comp2522.termproject.planetbandit;
 
-import ca.bcit.comp2522.termproject.planetbandit.Entities.Player;
-// import ca.bcit.comp2522.termproject.planetbandit.Entities.Spaceship;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
+/**
+ * Represents as a driver class for the original Java FX classes we couldn't combine with our game.
+ *
+ * @author Prab and Benny
+ * @version 2022
+ */
 public class GamePlay extends Application {
-    private Stage stage = new Stage();
-    private final Space space = new Space();
-    private final String spaceBackground = "space.jpg";
-
-    private final Player player = new Player(3, 1, 100,
-            270, 450, 0, "Bob");
-
-    //private final Riddles riddles = new Riddles(player);
+    private final Stage stage = new Stage();
     private final DisplaySplashScreen welcomeScreen = new DisplaySplashScreen();
     /**
      * Displays an image that can be moved using the arrow keys.
      *
      * @param primaryStage a Stage
+     * @throws Exception if login is invalid.
      */
-    public void start(Stage primaryStage) throws Exception {
+    public void start(final Stage primaryStage) throws Exception {
         welcomeScreen.start(stage);
     }
 
+    /**
+     * Returns the stage object.
+     * @return a stage object
+     */
     public Stage getStage() {
         return stage;
     }
@@ -33,9 +35,7 @@ public class GamePlay extends Application {
      *
      * @param args command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
         launch(args);
-        Platformer platformer = new Platformer();
-        platformer.main(args);
     }
 }

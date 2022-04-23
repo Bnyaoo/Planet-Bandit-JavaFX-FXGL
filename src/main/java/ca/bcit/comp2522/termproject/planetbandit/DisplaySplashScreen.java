@@ -26,9 +26,9 @@ public class DisplaySplashScreen {
      * @throws Exception if the user's login credentials is in invalid
      */
     private void showGame() throws Exception {
-//        MainMenu mainMenu = new MainMenu();
-        LoginApp loginApp = new LoginApp();
+        MainMenu mainMenu = new MainMenu();
+//        LoginApp loginApp = new LoginApp();
         GamePlay gamePlay = new GamePlay();
-        loginApp.start(gamePlay.getStage());
+        mainMenu.start(gamePlay.getStage());
     }
 }

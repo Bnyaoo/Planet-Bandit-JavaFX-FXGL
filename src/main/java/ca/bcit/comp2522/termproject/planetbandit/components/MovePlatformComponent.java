@@ -7,38 +7,60 @@ import com.almasb.fxgl.physics.PhysicsComponent;
 import com.almasb.fxgl.time.LocalTimer;
 import javafx.util.Duration;
 
+/**
+ * Represents a moving platform object.
+ *
+ * @author Prab and Benny
+ * @version 2022
+ */
 public class MovePlatformComponent extends Component {
     private PhysicsComponent physic;
-    private LocalTimer moveTimer = FXGL.newLocalTimer();
-    private Duration seconds;
+    private final LocalTimer moveTimer = FXGL.newLocalTimer();
+    private final Duration seconds;
     private double speed;
-    private boolean isHor;
+    private final boolean isHor;
 
-    public MovePlatformComponent(SpawnData data) {
-        this(data.<Integer>get("millis"),data.<Integer>get("speed"),data.<Boolean>get("isHor"));
+    /**
+     * Constructs a moving platform object.
+     * @param data a SpawnData object
+     */
+    public MovePlatformComponent(final SpawnData data) {
+        this(data.<Integer>get("millis"), data.<Integer>get("speed"), data.<Boolean>get("isHor"));
     }
 
-
-    public MovePlatformComponent(int millis ,int speed,boolean isHor) {
+    /**
+     * Constructs a moving platform object.
+     *
+     * @param millis an int that represents the milliseconds
+     * @param speed an int that represents the speed
+     * @param isHor a boolean
+     */
+    public MovePlatformComponent(final int millis, final int speed, final boolean isHor) {
         seconds = Duration.millis(millis);
         this.speed = speed;
         this.isHor = isHor;
     }
 
+    /**
+     * Starts the timer when a platform is added.
+     */
     @Override
     public void onAdded() {
         moveTimer.capture();
     }
 
+    /**
+     * Updates the timer when a platform is added.
+     */
     @Override
-    public void onUpdate(double tpf) {
+    public void onUpdate(final double tpf) {
         if (moveTimer.elapsed(seconds)) {
             speed = speed * -1;
             moveTimer.capture();
         }
         if (isHor) {
             physic.setVelocityX(speed);
-        }else {
+        } else {
             physic.setVelocityY(speed);
         }
     }
